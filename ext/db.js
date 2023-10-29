@@ -1,6 +1,6 @@
 const db = require("mongoose");
 require("dotenv").config();
-//Строки подключения
+//Connection strings
 const MONGODB_URI = process.env.MONGO_URL
 //const MONGODB_URI = "mongodb://localhost:27017/lazyhome"
 
