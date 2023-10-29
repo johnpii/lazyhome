@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/main.css')
+  body
+    block content
+h1 Add Product
+form(action='/admin/add' method='POST' enctype="multipart/form-data")
+    | title: 
+    input(type='text', name='title', value='')
+    |          price: 
+    input(type='text', name='price', value='')
+    |          image: 
+    input(type='file', name='image', value='')
+    input(type='submit', value='Submit')
