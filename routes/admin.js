@@ -32,10 +32,29 @@ router.get('/delete/:id', async (req, res) => {
     res.redirect("/admin");
 });
 
-router.get('/update/:id', (req, res) => {
-    res.redirect("/admin");
+router.get('/update/:id', async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    res.render('edit', {
+        product: product
+    });
 });
-router.post('/update/:id', (req, res) => {
+
+router.post('/update/:id', upload.single("image"), async (req, res) => {
+    const currentProduct = await Product.findById(req.params.id);
+    let updatedProduct;
+    if (req.file && req.file.buffer) {
+        updatedProduct = {
+            image: req.file.buffer,
+            title: req.body.title,
+            price: req.body.price
+        };
+    } else {
+        updatedProduct = {
+            title: req.body.title,
+            price: req.body.price
+        };
+    }
+    await Product.findByIdAndUpdate({_id: req.params.id }, updatedProduct);
     res.redirect("/admin");
 });
 module.exports = router;
