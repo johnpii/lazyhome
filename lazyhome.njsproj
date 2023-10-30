@@ -40,6 +40,7 @@
     <Content Include="README.md" />
     <Content Include="views\add.pug" />
     <Content Include="views\adminIndex.pug" />
+    <Content Include="views\edit.pug" />
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
     <Content Include="views\error.pug" />
