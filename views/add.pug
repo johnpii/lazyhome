@@ -1,12 +1,55 @@
 extends layout
 
 block content
+    a(class="home-button" href="/admin") Back to Admin Index
+    style.
+     .home-button {
+          background-color: #000066;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-decoration: none;
+          text-align: center;
+          display: block;
+          margin: 0 auto;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+          transition: background-color 0.3s ease;
+        }
+
+     .home-button:hover {
+          background-color: #0000cc;
+        }
+     form {
+        margin-bottom: 20px;
+        }
+     label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        }
+     input[type="text"],
+     input[type="file"] {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        }
+     input[type="submit"] {
+        background-color: #337ab7;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        }
+     input[type="submit"]:hover {
+        background-color: #286090;
+        }
     h1 Add Product
     form(action='/admin/add' method='POST' enctype="multipart/form-data")
-        | title: 
-        input(type='text', name='title', value='')
-        |          price: 
-        input(type='text', name='price', value='')
-        |          image: 
-        input(type='file', name='image', value='')
-        input(type='submit', value='Submit')
+      | title: 
+      input(type='text', name='title', value='')
+      |          price: 
+      input(type='text', name='price', value='')
+      |          image: 
+      input(type='file', name='image', value='')
+      input(type='submit', value='Submit')
