@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  a(class="home-button" href="/") Home
   h1 #{title}
   style.
       table {
@@ -21,7 +22,7 @@ block content
         height: auto;
       }
       .add-button {
-        background-color: #66ff66;
+        background-color: #33cc33;
         border: none;
         color: white;
         padding: 10px 20px;
@@ -31,8 +32,53 @@ block content
         transition: background-color 0.3s ease;
       }
       .add-button:hover {
-      background-color: #99ff99;
+      background-color: #66ff66;
       }
+      .delete-button {
+          background-color: #ffd700;
+          border: none;
+          color: #333;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-decoration: none;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+          transition: background-color 0.3s ease;
+        }
+
+    .delete-button:hover {
+          background-color: #ffcc00;
+        }
+    .update-button {
+          background-color: #5a9aa5;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-decoration: none;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+          transition: background-color 0.3s ease;
+        }
+
+    .update-button:hover {
+          background-color: #326b77;
+        }
+    .home-button {
+      background-color: #000066;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .home-button:hover {
+      background-color: #0000cc;
+    }
   a(href="/admin/add" class="add-button") Add Product
   h1 Product List
     table
@@ -50,3 +96,6 @@ block content
             td #{product.price}
             td
               img(src="data:image/jpg;base64," + product.image.toString('base64'))
+            td 
+              a(class="delete-button" href="/admin/delete/" + product._id) Delete
+              a(class="update-button" href="/admin/update/" + product._id) Update

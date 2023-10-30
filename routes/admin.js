@@ -24,6 +24,18 @@ router.post('/add', upload.single("image"), async (req, res) => {
     const uploadObject = new Product(imageUploadObject);
     // saving the object into the database
     const uploadProcess = await uploadObject.save();
-    res.redirect("/admin/add");
+    res.redirect("/admin");
+});
+
+router.get('/delete/:id', async (req, res) => {
+    await Product.findByIdAndDelete(req.params.id);
+    res.redirect("/admin");
+});
+
+router.get('/update/:id', (req, res) => {
+    res.redirect("/admin");
+});
+router.post('/update/:id', (req, res) => {
+    res.redirect("/admin");
 });
 module.exports = router;
