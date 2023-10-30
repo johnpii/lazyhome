@@ -8,7 +8,7 @@ const upload = multer({ storage: storage });
 
 router.get('/', async function (req, res) {
     const products = await Product.find({});
-    res.render('index', {
+    res.render('adminIndex', {
         products: products
     });
 });
