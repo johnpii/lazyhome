@@ -2,6 +2,18 @@ extends layout
 
 block content
     a(class="home-button" href="/admin") Back to Admin Index
+    script.
+        function previewImage(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              document.getElementById('imagePreview').src = e.target.result;
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
     style.
      .home-button {
           background-color: #000066;
@@ -52,6 +64,6 @@ block content
       |          price: 
       input(type='text', name='price', value=product.price)
       |          image: 
-      input(type='file', name='image', value='')
-      img(src="data:image/jpg;base64," + product.image.toString('base64'))
+      input(type='file', name='image', value='', onchange="previewImage(this);")
+      img(id="imagePreview" src="data:image/jpg;base64," + product.image.toString('base64'))
       input(type='submit', value='Update')
