@@ -7,7 +7,7 @@ router.get('/', async function (req, res) {
     //const test = new Product({ title: "Lamp", price: 41 });
     //await test.save();
     const products = await Product.find({});
-    res.render('index', {
+    res.json({
         title: 'Lazy Home',
         products: products
     });
