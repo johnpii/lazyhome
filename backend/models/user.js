@@ -1,6 +1,6 @@
-const {Schema, model} = require('mongoose')
+const db = require('../ext/db')
 
-const User = new Schema({
+const userSchema = new db.Schema({
     username: {type: String, 
         required: true,
         unique: true
@@ -10,4 +10,4 @@ const User = new Schema({
     }
 })
 
-module.exports = model('User', User)
+module.exports = db.model('users', userSchema)
