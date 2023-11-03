@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const {check, validationResult} = require("express-validator")
 const router = new Router()
-const secret_key = process.env.secret_key
+const SECRET_KEY = process.env.SECRET_KEY
 
 router.post('/api/registration', 
     [
@@ -55,7 +55,7 @@ router.post('/api/login',
             return res.status(400).json({message: "invalid password"})
         }
 
-        const token = jwt.sign({id: user.id}, secret_key, {expiresIn: "1h"})
+        const token = jwt.sign({id: user.id}, SECRET_KEY, {expiresIn: "1h"})
         return res.json({
             token,
             user: {
