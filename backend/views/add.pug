@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    a(class="home-button" href="/admin") Back to Admin Index
+    a(class="home-button" href="/api/admin") Back to Admin Index
     script.
         function previewImage(input) {
           if (input.files && input.files[0]) {
@@ -57,7 +57,7 @@ block content
         background-color: #286090;
         }
     h1 Add Product
-    form(action='/admin/add' method='POST' enctype="multipart/form-data")
+    form(action='/api/admin/add' method='POST' enctype="multipart/form-data")
       | title: 
       input(type='text', name='title', value='')
       |          price: 
