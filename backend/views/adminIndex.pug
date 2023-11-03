@@ -79,7 +79,7 @@ block content
     .home-button:hover {
       background-color: #0000cc;
     }
-  a(href="/admin/add" class="add-button") Add Product
+  a(href="/api/admin/add" class="add-button") Add Product
   h1 Product List
     table
       thead
@@ -97,5 +97,5 @@ block content
             td
               img(src="data:image/jpg;base64," + product.image.toString('base64'))
             td 
-              a(class="delete-button" href="/admin/delete/" + product._id) Delete
-              a(class="update-button" href="/admin/update/" + product._id) Update
+              a(class="delete-button" href="/api/admin/delete/" + product._id) Delete
+              a(class="update-button" href="/api/admin/update/" + product._id) Update

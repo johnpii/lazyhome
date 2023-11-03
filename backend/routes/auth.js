@@ -6,7 +6,7 @@ const {check, validationResult} = require("express-validator")
 const router = new Router()
 const SECRET_KEY = process.env.SECRET_KEY
 
-router.post('/api/registration', 
+router.post('/registration', 
     [
         check('username', 'Username must be longer than 3 and shorter than 12').isLength({min:3, max:12}),
         check('password', 'Password must be longer than 3 and shorter than 12').isLength({min:3, max:12})
@@ -38,7 +38,7 @@ router.post('/api/registration',
     }
 })
 
-router.post('/api/login', 
+router.post('/login', 
     async (req, res) => {
     try {
         
