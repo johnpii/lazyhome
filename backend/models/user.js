@@ -1,0 +1,13 @@
+const db = require('../ext/db')
+
+const userSchema = new db.Schema({
+    username: {type: String, 
+        required: true,
+        unique: true
+        },
+    password: {type: String, 
+        required: true
+    }
+})
+
+module.exports = db.model('users', userSchema)
