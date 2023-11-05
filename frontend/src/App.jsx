@@ -12,7 +12,7 @@ function App() {
   };
   useEffect(() => {
     fetchProducts();
-  }, )
+  }, [])
   return (
     <div className='App'>
       <h1>Products</h1>
