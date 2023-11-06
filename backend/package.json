@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node backend/app"
+    "start": "node app"
   },
   "description": "lazyhome",
   "author": {
