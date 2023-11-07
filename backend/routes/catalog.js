@@ -4,9 +4,9 @@ const Product = require("../models/product");
 
 
 router.get('/:id', async function (req, res) {
-    const products = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id);
     res.json({
-        products: products
+        product: product
     });
 });
 
