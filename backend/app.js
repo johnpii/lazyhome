@@ -9,7 +9,8 @@ const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
 const admin = require('./routes/admin');
-const auth = require('./routes/auth')
+const auth = require('./routes/auth');
+const catalog = require('./routes/catalog');
 
 const app = express();
 const router = express.Router();
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 router.use('/', index);
 router.use('/admin', admin);
 router.use('/auth', auth);
+router.use('/catalog', catalog);
 app.use('/api', router);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
