@@ -1,9 +1,9 @@
-const Router = require("express")
+const express = require('express');
+const router = express.Router();
 const User = require("../models/user")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const {check, validationResult} = require("express-validator")
-const router = new Router()
 const SECRET_KEY = process.env.SECRET_KEY
 
 router.post('/registration', 
