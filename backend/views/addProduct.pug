@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    a(class="home-button" href="/api/admin") Back to Admin Index
+    a(class="home-button" href="/api/admin/products") Back to All products
     script.
         function previewImage(input) {
           if (input.files && input.files[0]) {
@@ -56,14 +56,13 @@ block content
      input[type="submit"]:hover {
         background-color: #286090;
         }
-    h1 Update Product
-    form(method='POST', action='/api/admin/update/'+product._id, enctype="multipart/form-data")
-      input(type='hidden', name='id', value=product._id)
+    h1 Add Product
+    form(action='/api/admin/products/add' method='POST' enctype="multipart/form-data")
       | title: 
-      input(type='text', name='title', value=product.title)
+      input(type='text', name='title', value='')
       |          price: 
-      input(type='text', name='price', value=product.price)
+      input(type='text', name='price', value='')
       |          image: 
       input(type='file', name='image', value='', onchange="previewImage(this);")
-      img(id="imagePreview" src="data:image/jpg;base64," + product.image.toString('base64'))
-      input(type='submit', value='Update')
+      img(id="imagePreview" src="" alt="Preview Image")
+      input(type='submit', value='Add')
