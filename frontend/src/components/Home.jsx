@@ -17,11 +17,11 @@ const Home = () => {
   return (
     <div className="">
       <Nav/>
-      <h1>Products</h1>
-      <div className="flex justify-around flex-wrap max-w-full gap-10">
+      <h1 className="text-2xl">Товары</h1>
+      <div className="flex justify-around flex-wrap gap-10 max-w-7xl mx-auto mt-9">
         {productList
           ? productList.products.map((item) => (
-              <ItemCard key={item._id} product={item} />
+              <ItemCard key={item._id} product={item}/>
             ))
           : "An error occured connecting to server"}
       </div>
