@@ -14,6 +14,24 @@ block content
             reader.readAsDataURL(input.files[0]);
           }
         }
+        window.onload = function() {
+         var titleInput = document.getElementsByName('title')[0];
+         var priceInput = document.getElementsByName('price')[0];
+         var imageInput = document.getElementsByName('image')[0];
+         var addButton = document.getElementById('addButton');
+
+         titleInput.addEventListener('input', checkInputs);
+         priceInput.addEventListener('input', checkInputs);
+         imageInput.addEventListener('change', checkInputs);
+
+         function checkInputs() {
+            if (titleInput.value !== '' && priceInput.value !== '' && imageInput.value !== '') {
+            addButton.disabled = false;
+            } else {
+            addButton.disabled = true;
+            }
+         }
+      };
     style.
      .home-button {
           background-color: #000066;
@@ -65,4 +83,4 @@ block content
       |          image: 
       input(type='file', name='image', value='', onchange="previewImage(this);")
       img(id="imagePreview" src="" alt="Preview Image")
-      input(type='submit', value='Add')
+      input(type='submit', id='addButton', value='Add')

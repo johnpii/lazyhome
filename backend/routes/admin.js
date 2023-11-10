@@ -37,7 +37,10 @@ router.get('/products/add', async function (req, res) {
     res.render('addProduct');
 });
 router.post('/products/add', upload.single("image"), async (req, res) => {
-    //if(req.file.buffer != null){
+    if (!req.file || !req.body.title || !req.body.price) {
+        return res.status(400).send("Please provide all the required fields");
+    }
+
     let imageUploadObject = {
         image: req.file.buffer,
         title: req.body.title,
@@ -46,7 +49,6 @@ router.post('/products/add', upload.single("image"), async (req, res) => {
     const uploadObject = new Product(imageUploadObject);
     // saving the object into the database
     const uploadProcess = await uploadObject.save();
-    //}
     res.redirect("/api/admin/products");
 });
 
