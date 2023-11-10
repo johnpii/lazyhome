@@ -15,9 +15,9 @@ const Home = () => {
     fetchProducts();
   }, []);
   return (
-    <div className="">
+    <div className="bg-[#242424]">
       <Nav/>
-      <h1 className="text-2xl">Товары</h1>
+      <h1 className="text-2xl mt-8">Товары</h1>
       <div className="flex justify-around flex-wrap gap-10 max-w-7xl mx-auto mt-9 pb-10">
         {productList
           ? productList.products.map((item) => (

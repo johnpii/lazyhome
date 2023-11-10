@@ -7,7 +7,7 @@ const Nav = () => {
       {link: "/", name: "Зарегистрироваться"},
     ]
     return (
-      <div className="max-w-full">
+      <div className="max-w-full bg-[#494949]">
         <ul className="flex justify-around text-xl mx-auto py-8 px-5">
           {navigation.map(item=>(
             <li key={item.link}><a href="{item.link}">{item.name}</a></li>
