@@ -1,0 +1,101 @@
+extends layout
+
+block content
+  a(class="home-button" href="/api/admin") Admin panel
+  h1 #{title}
+  style.
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      img {
+        max-width: 100px;
+        height: auto;
+      }
+      .add-button {
+        background-color: #33cc33;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+      .add-button:hover {
+      background-color: #66ff66;
+      }
+      .delete-button {
+          background-color: #ffd700;
+          border: none;
+          color: #333;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-decoration: none;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+          transition: background-color 0.3s ease;
+        }
+
+    .delete-button:hover {
+          background-color: #ffcc00;
+        }
+    .update-button {
+          background-color: #5a9aa5;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-decoration: none;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+          transition: background-color 0.3s ease;
+        }
+
+    .update-button:hover {
+          background-color: #326b77;
+        }
+    .home-button {
+      background-color: #000066;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .home-button:hover {
+      background-color: #0000cc;
+    }
+  a(href="/api/admin/products/add" class="add-button") Add Product
+  h1 Product List
+    table
+      thead
+        tr
+          th id
+          th Title
+          th Price
+          th Image
+      tbody
+        each product in products
+          tr
+            td #{product._id}
+            td #{product.title}
+            td #{product.price}
+            td
+              img(src="data:image/jpg;base64," + product.image.toString('base64'))
+            td 
+              a(class="delete-button" href="/api/admin/products/delete/" + product._id) Delete
+              a(class="update-button" href="/api/admin/products/update/" + product._id) Update
