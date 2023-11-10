@@ -2,7 +2,7 @@ import { imagefrombuffer } from "imagefrombuffer";
 
 const ItemCard = ({ product }) => {
   return (
-    <div className="max-w-[240px]">
+    <div className="max-w-[240px] flex flex-col justify-between">
       <img className="h-60"
         src={imagefrombuffer({
           type: product.image.type,
