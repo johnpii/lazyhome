@@ -2,23 +2,6 @@ extends layout
 
 block content
     a(class="home-button" href="/api/admin/users") Back to All users
-    script.
-        window.onload = function() {
-         var usernameInput = document.getElementsByName('username')[0];
-         var passwordInput = document.getElementsByName('password')[0];
-         var addButton = document.getElementById('addButton');
-
-         usernameInput.addEventListener('input', checkInputs);
-         passwordInput.addEventListener('input', checkInputs);
-
-         function checkInputs() {
-            if (usernameInput.value !== '' && passwordInput.value !== '') {
-            addButton.disabled = false;
-            } else {
-            addButton.disabled = true;
-            }
-         }
-      };
     style.
      .home-button {
           background-color: #000066;
@@ -62,9 +45,9 @@ block content
         background-color: #286090;
         }
     h1 Add user
-    form(action='/api/auth/registration' method='POST')
+    form(action='/api/auth/login' method='POST')
       | username: 
       input(type='text', name='username', value='')
       |          password: 
       input(type='text', name='password', value='')
-      input(type='submit', id='addButton', value='Add')
+      input(type='submit', value='Add')
