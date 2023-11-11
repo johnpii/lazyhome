@@ -7,16 +7,14 @@ block content
          var usernameInput = document.getElementsByName('username')[0];
          var roleInput = document.getElementsByName('role')[0];
          var passwordInput = document.getElementsByName('password')[0];
-         var newPasswordInput = document.getElementsByName('newPassword')[0];
          var updateButton = document.getElementById('updateButton');
 
          usernameInput.addEventListener('input', checkInputs);
          roleInput.addEventListener('input', checkInputs);
          passwordInput.addEventListener('input', checkInputs);
-         newPasswordInput.addEventListener('input', checkInputs);
 
          function checkInputs() {
-            if (usernameInput.value !== '' && roleInput.value !== '' && passwordInput.value !== '' && newPasswordInput.value !== '') {
+            if (usernameInput.value !== '' && roleInput.value !== '' && passwordInput.value !== '') {
             updateButton.disabled = false;
             } else {
             updateButton.disabled = true;
@@ -73,6 +71,6 @@ block content
       input(type='text', name='role', value=user.role)
       |          password: 
       input(type='text', name='password', value='')
-      |          new password: 
+      |          new password (not required): 
       input(type='text', name='newPassword', value='')
       input(type='submit', id='updateButton', value='Update')
