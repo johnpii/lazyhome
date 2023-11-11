@@ -1,7 +1,6 @@
 extends layout
 
 block content
-    a(class="home-button" href="/api/admin/users") Back to All users
     style.
      .home-button {
           background-color: #000066;
@@ -44,10 +43,10 @@ block content
      input[type="submit"]:hover {
         background-color: #286090;
         }
-    h1 Add user
+    h1 Login to account
     form(action='/api/auth/login' method='POST')
       | username: 
       input(type='text', name='username', value='')
       |          password: 
       input(type='text', name='password', value='')
-      input(type='submit', value='Add')
+      input(type='submit', value='Login')
