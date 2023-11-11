@@ -26,12 +26,22 @@ router.post('/updateUser/:id', async function (req, res) {
     const isPasswordValid = await bcrypt.compare(req.body.password, currentUser.password);
     console.log(isPasswordValid);
     if(isPasswordValid){
-        updatedUserHashedPassword = await bcrypt.hash(req.body.newPassword, 7);
-        let updatedUser = {
-            username: req.body.username,
-            password: updatedUserHashedPassword
-        };
-        await User.findByIdAndUpdate({_id: req.params.id }, updatedUser);
+        if(req.body.newPassword){
+            updatedUserHashedPassword = await bcrypt.hash(req.body.newPassword, 7);
+            let updatedUser = {
+                username: req.body.username,
+                role: req.body.role,
+                password: updatedUserHashedPassword
+            };
+            await User.findByIdAndUpdate({_id: req.params.id }, updatedUser);
+        }
+        else{
+            let updatedUser = {
+                username: req.body.username,
+                role: req.body.role,
+            };
+            await User.findByIdAndUpdate({_id: req.params.id }, updatedUser);
+        }
         res.redirect("/api/admin/users");
     }
     else{
