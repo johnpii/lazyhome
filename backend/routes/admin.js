@@ -18,10 +18,6 @@ router.get('/users', async function (req, res) {
     });
 });
 
-router.get('/users/add', function (req, res) {
-    res.render('addUser');
-});
-
 router.get('/users/delete/:id', async (req, res) => {
     await User.findByIdAndDelete(req.params.id);
     res.redirect("/api/admin/users");
@@ -65,7 +61,6 @@ router.get('/products/update/:id', async (req, res) => {
 });
 
 router.post('/products/update/:id', upload.single("image"), async (req, res) => {
-    const currentProduct = await Product.findById(req.params.id);
     let updatedProduct;
     if (req.file && req.file.buffer) {
         updatedProduct = {

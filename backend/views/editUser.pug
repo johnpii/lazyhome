@@ -5,17 +5,21 @@ block content
     script.
         window.onload = function() {
          var usernameInput = document.getElementsByName('username')[0];
+         var roleInput = document.getElementsByName('role')[0];
          var passwordInput = document.getElementsByName('password')[0];
-         var addButton = document.getElementById('addButton');
+         var newPasswordInput = document.getElementsByName('newPassword')[0];
+         var updateButton = document.getElementById('updateButton');
 
          usernameInput.addEventListener('input', checkInputs);
+         roleInput.addEventListener('input', checkInputs);
          passwordInput.addEventListener('input', checkInputs);
+         newPasswordInput.addEventListener('input', checkInputs);
 
          function checkInputs() {
-            if (usernameInput.value !== '' && passwordInput.value !== '') {
-            addButton.disabled = false;
+            if (usernameInput.value !== '' && roleInput.value !== '' && passwordInput.value !== '' && newPasswordInput.value !== '') {
+            updateButton.disabled = false;
             } else {
-            addButton.disabled = true;
+            updateButton.disabled = true;
             }
          }
       };
@@ -62,9 +66,13 @@ block content
         background-color: #286090;
         }
     h1 Add user
-    form(action='/api/auth/registration' method='POST')
+    form(action='/api/auth/updateUser/'+user._id, method='POST')
       | username: 
-      input(type='text', name='username', value='')
+      input(type='text', name='username', value=user.username)
+      | role: 
+      input(type='text', name='role', value=user.role)
       |          password: 
       input(type='text', name='password', value='')
-      input(type='submit', id='addButton', value='Add')
+      |          new password: 
+      input(type='text', name='newPassword', value='')
+      input(type='submit', id='updateButton', value='Update')

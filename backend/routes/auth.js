@@ -6,6 +6,39 @@ const jwt = require("jsonwebtoken")
 const {check, validationResult} = require("express-validator")
 const SECRET_KEY = process.env.SECRET_KEY
 
+router.get('/login', function (req, res) {
+    res.render('login');
+});
+router.get('/registration', function (req, res) {
+    res.render('addUser');
+});
+
+router.get('/updateUser/:id', async function (req, res) {
+    const user = await User.findById(req.params.id);
+    res.render('editUser', {
+        user: user
+    });
+})
+
+router.post('/updateUser/:id', async function (req, res) {
+    const currentUser = await User.findById(req.params.id);
+    console.log(currentUser.password);
+    const isPasswordValid = await bcrypt.compare(req.body.password, currentUser.password);
+    console.log(isPasswordValid);
+    if(isPasswordValid){
+        updatedUserHashedPassword = await bcrypt.hash(req.body.newPassword, 7);
+        let updatedUser = {
+            username: req.body.username,
+            password: updatedUserHashedPassword
+        };
+        await User.findByIdAndUpdate({_id: req.params.id }, updatedUser);
+        res.redirect("/api/admin/users");
+    }
+    else{
+        return res.status(400).send("Wrong user data");
+    }
+})
+
 router.post('/registration', 
     [
         check('username', 'Username must be longer than 3 and shorter than 12').isLength({min:3, max:12}),
