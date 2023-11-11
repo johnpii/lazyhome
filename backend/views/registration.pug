@@ -1,7 +1,6 @@
 extends layout
 
 block content
-    a(class="home-button" href="/api/admin/users") Back to All users
     script.
         window.onload = function() {
          var usernameInput = document.getElementsByName('username')[0];
@@ -61,7 +60,7 @@ block content
      input[type="submit"]:hover {
         background-color: #286090;
         }
-    h1 Add user
+    h1 Registration
     form(action='/api/auth/registration' method='POST')
       | username: 
       input(type='text', name='username', value='')

@@ -10,7 +10,7 @@ router.get('/login', function (req, res) {
     res.render('login');
 });
 router.get('/registration', function (req, res) {
-    res.render('addUser');
+    res.render('registration');
 });
 
 router.get('/updateUser/:id', async function (req, res) {
@@ -84,7 +84,7 @@ router.post('/registration',
 router.post('/login', 
     async (req, res) => {
     try {
-        
+        const maxAge = 3 * 60 * 60;
         const {username, password} = req.body
 
         const user = await User.findOne({username})
@@ -98,19 +98,26 @@ router.post('/login',
             return res.status(400).json({message: "invalid password"})
         }
 
-        const token = jwt.sign({id: user.id}, SECRET_KEY, {expiresIn: "1h"})
-        return res.json({
-            token,
-            user: {
-                id: user.id,
-                username: user.username
-            }
-        })
+        const token = jwt.sign({id: user.id, username, role: user.role}, SECRET_KEY, {expiresIn: maxAge});
+        res.cookie("jwt", token, {
+            httpOnly: true,
+            maxAge: maxAge * 1000, // 3hrs in ms
+          });
+          res.status(201).json({
+            message: "User successfully Logged in",
+            user: user._id,
+          });
 
     } catch (error) {
         console.log(error)
         res.send({message: "Server error"})
     }
 })
+
+router.get("/logout", (req, res) => {
+    res.cookie("jwt", "", { maxAge: "1" })
+    res.redirect("/api")
+  })
+
 
 module.exports = router

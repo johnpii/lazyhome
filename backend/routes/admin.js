@@ -43,8 +43,7 @@ router.post('/products/add', upload.single("image"), async (req, res) => {
         price: req.body.price
     };
     const uploadObject = new Product(imageUploadObject);
-    // saving the object into the database
-    const uploadProcess = await uploadObject.save();
+    await uploadObject.save();
     res.redirect("/api/admin/products");
 });
 
