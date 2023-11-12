@@ -1,6 +1,23 @@
 extends layout
 
 block content
+    script.
+        window.onload = function() {
+         var usernameInput = document.getElementsByName('username')[0];
+         var passwordInput = document.getElementsByName('password')[0];
+         var loginButton = document.getElementById('loginButton');
+
+         usernameInput.addEventListener('input', checkInputs);
+         passwordInput.addEventListener('input', checkInputs);
+
+         function checkInputs() {
+            if (usernameInput.value !== '' && passwordInput.value !== '') {
+            loginButton.disabled = false;
+            } else {
+            loginButton.disabled = true;
+            }
+         }
+      };
     style.
      .home-button {
           background-color: #000066;
@@ -49,4 +66,4 @@ block content
       input(type='text', name='username', value='')
       |          password: 
       input(type='text', name='password', value='')
-      input(type='submit', value='Login')
+      input(type='submit', id='loginButton', value='Login')

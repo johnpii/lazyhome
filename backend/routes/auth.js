@@ -13,42 +13,6 @@ router.get('/registration', function (req, res) {
     res.render('registration');
 });
 
-router.get('/updateUser/:id', async function (req, res) {
-    const user = await User.findById(req.params.id);
-    res.render('editUser', {
-        user: user
-    });
-})
-
-router.post('/updateUser/:id', async function (req, res) {
-    const currentUser = await User.findById(req.params.id);
-    console.log(currentUser.password);
-    const isPasswordValid = await bcrypt.compare(req.body.password, currentUser.password);
-    console.log(isPasswordValid);
-    if(isPasswordValid){
-        if(req.body.newPassword){
-            updatedUserHashedPassword = await bcrypt.hash(req.body.newPassword, 7);
-            let updatedUser = {
-                username: req.body.username,
-                role: req.body.role,
-                password: updatedUserHashedPassword
-            };
-            await User.findByIdAndUpdate({_id: req.params.id }, updatedUser);
-        }
-        else{
-            let updatedUser = {
-                username: req.body.username,
-                role: req.body.role,
-            };
-            await User.findByIdAndUpdate({_id: req.params.id }, updatedUser);
-        }
-        res.redirect("/api/admin/users");
-    }
-    else{
-        return res.status(400).send("Wrong user data");
-    }
-})
-
 router.post('/registration', 
     [
         check('username', 'Username must be longer than 3 and shorter than 12').isLength({min:3, max:12}),
