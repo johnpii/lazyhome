@@ -63,8 +63,8 @@ block content
      input[type="submit"]:hover {
         background-color: #286090;
         }
-    h1 Add user
-    form(action='/api/auth/updateUser/'+user._id, method='POST')
+    h1 Update user
+    form(action='/api/admin/users/update/'+user._id, method='POST')
       | username: 
       input(type='text', name='username', value=user.username)
       | role: 
