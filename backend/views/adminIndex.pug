@@ -2,28 +2,30 @@ extends layout
 
 block content
   a(class="home-button" href="/api") Home
-  br
   a(href="/api/admin/products" class="update-button") Products
-  br
-  br
-  br
   a(href="/api/admin/users" class="update-button") Users
   h1 #{title}
   style.
     .update-button {
-          background-color: #5a9aa5;
-          border: none;
-          color: white;
-          padding: 10px 20px;
-          border-radius: 5px;
-          text-decoration: none;
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-          transition: background-color 0.3s ease;
-        }
+      display: inline-block;
+      background-color: #1da1f2;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
 
     .update-button:hover {
-          background-color: #326b77;
-        }
+      background-color: #0c8db1;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
     .home-button {
       background-color: #000066;
       border: none;
@@ -33,7 +35,7 @@ block content
       text-decoration: none;
       text-align: center;
       display: block;
-      margin: 0 auto;
+      margin-bottom: 10px;
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
       transition: background-color 0.3s ease;
     }
