@@ -11,7 +11,10 @@ router.get('/:id', async function (req, res) {
             return res.status(404).json({ error: 'Product not found' });
         }
 
-        res.json({
+        // res.json({
+        //     product: product
+        // });
+        res.render('product', {
             product: product
         });
     } catch (error) {
