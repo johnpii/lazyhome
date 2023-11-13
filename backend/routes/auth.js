@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/user")
+const Cart = require("../models/cart");
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const {check, validationResult} = require("express-validator")
@@ -37,6 +38,21 @@ router.post('/registration',
         const hashPassword = await bcrypt.hash(password, 7)
         const user = new User({username, password: hashPassword})
         await user.save()
+        const maxAge = 3 * 60 * 60;
+        const token = jwt.sign(
+            { id: user._id, username, role: user.role },
+            SECRET_KEY,
+            {
+              expiresIn: maxAge, // 3hrs in sec
+            }
+        );
+        res.cookie("jwt", token, {
+            httpOnly: true,
+            maxAge: maxAge * 1000, // 3hrs in ms
+        });
+        const userId = user._id;
+        let cart = new Cart({ userId });
+        await cart.save();
         return res.json({message: "User was created"})
 
     } catch (error) {
@@ -62,15 +78,15 @@ router.post('/login',
             return res.status(400).json({message: "invalid password"})
         }
 
-        const token = jwt.sign({id: user.id, username, role: user.role}, SECRET_KEY, {expiresIn: maxAge});
+        const token = jwt.sign({id: user._id, username, role: user.role}, SECRET_KEY, {expiresIn: maxAge});
         res.cookie("jwt", token, {
             httpOnly: true,
             maxAge: maxAge * 1000, // 3hrs in ms
-          });
-          res.status(201).json({
-            message: "User successfully Logged in",
-            user: user._id,
-          });
+        });
+        res.status(201).json({
+        message: "User successfully Logged in",
+        user: user._id,
+        });
 
     } catch (error) {
         console.log(error)

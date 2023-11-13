@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
+const Cart = require("../models/cart");
 const Product = require("../models/product");
 const User = require("../models/user");
 const multer = require('multer');
@@ -26,6 +27,7 @@ router.get('/users', async function (req, res) {
 router.get('/users/delete/:id', async (req, res) => {
     try {
         await User.findByIdAndDelete(req.params.id);
+        await Cart.findOneAndDelete({ userId: req.params.id });
         res.redirect("/api/admin/users");
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });

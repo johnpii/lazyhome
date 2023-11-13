@@ -1,0 +1,73 @@
+extends layout
+
+block content
+  style.
+    .container {
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .item-image {
+      flex: 0 0 100px;
+      margin-right: 10px;
+    }
+
+    .item-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    .delete-button {
+      display: block;
+      text-align: right;
+      text-decoration: none;
+      color: red;
+      margin-top: 5px;
+      position: relative;
+    }
+
+    .delete-button:hover {
+      background-color: red;
+      color: white;
+    }
+
+    .delete-button:hover:after {
+      content: "Remove";
+      position: absolute;
+      font-size: 14px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+  .container
+    h1 My Cart
+    if cartItems.length > 0
+      each item in cartItems
+        .item
+          .item-image
+            img(src="data:image/jpg;base64," + item.product.image.toString('base64'))
+          .item-details
+            h2 #{item.product.title}
+            p Quantity: #{item.quantity}
+            p Price: $#{item.product.price}
+            a(class="delete-button" href="/api/cart/remove/" + item.product._id) Remove
+    else
+      p Your cart is empty.

@@ -39,6 +39,7 @@ block content
           border: none;
           color: #333;
           padding: 10px 20px;
+          margin-left: 10px;
           border-radius: 5px;
           text-decoration: none;
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -100,3 +101,4 @@ block content
             td 
               a(class="delete-button" href="/api/admin/products/delete/" + product._id) Delete
               a(class="update-button" href="/api/admin/products/update/" + product._id) Update
+              a(class="delete-button" href="/api/catalog/" + product._id) Catalog
