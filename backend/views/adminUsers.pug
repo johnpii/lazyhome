@@ -86,6 +86,7 @@ block content
     }
   a(href="/api/auth/registration" class="add-button") Add User
   a(href="/api/auth/login" class="add-button") Login
+  a(class="delete-button" href="/api/cart") Cart
   h1 Users List
     table
       thead
@@ -104,4 +105,3 @@ block content
             td 
               a(class="delete-button" href="/api/admin/users/delete/" + user._id) Delete
               a(class="update-button" href="/api/admin/users/update/" + user._id) Update
-              a(class="delete-button" href="/api/cart") Cart
