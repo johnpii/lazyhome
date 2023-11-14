@@ -5,7 +5,6 @@ const Nav = () => {
     { link: "/catalog", name: "Каталог" },
     { link: "/cart", name: "Корзина" },
     { link: "/login", name: "Войти" },
-    { link: "/register", name: "Зарегистрироваться" },
   ];
   return (
     <div className="max-w-full bg-[#494949]">
