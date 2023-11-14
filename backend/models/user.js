@@ -12,6 +12,6 @@ const userSchema = new db.Schema({
         type: String,
         default: 'user'
     }
-})
+}, { versionKey: false })
 
 module.exports = db.model('users', userSchema)
