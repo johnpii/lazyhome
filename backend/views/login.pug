@@ -1,19 +1,23 @@
 extends layout
 
 block content
-    a(class="home-button" href="/api/admin/users") Back to All users
     script.
-        function previewImage(input) {
-          if (input.files && input.files[0]) {
-            var reader = new FileReader();
+        window.onload = function() {
+         var usernameInput = document.getElementsByName('username')[0];
+         var passwordInput = document.getElementsByName('password')[0];
+         var loginButton = document.getElementById('loginButton');
 
-            reader.onload = function (e) {
-              document.getElementById('imagePreview').src = e.target.result;
+         usernameInput.addEventListener('input', checkInputs);
+         passwordInput.addEventListener('input', checkInputs);
+
+         function checkInputs() {
+            if (usernameInput.value !== '' && passwordInput.value !== '') {
+            loginButton.disabled = false;
+            } else {
+            loginButton.disabled = true;
             }
-
-            reader.readAsDataURL(input.files[0]);
-          }
-        }
+         }
+      };
     style.
      .home-button {
           background-color: #000066;
@@ -56,10 +60,10 @@ block content
      input[type="submit"]:hover {
         background-color: #286090;
         }
-    h1 Add user
-    form(action='/api/auth/registration' method='POST')
+    h1 Login to account
+    form(action='/api/auth/login' method='POST')
       | username: 
       input(type='text', name='username', value='')
       |          password: 
       input(type='text', name='password', value='')
-      input(type='submit', value='Add')
+      input(type='submit', id='loginButton', value='Login')

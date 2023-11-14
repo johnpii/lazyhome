@@ -1,0 +1,95 @@
+extends layout
+
+block content
+  style.
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f8fa;
+    }
+
+    .container {
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    .product-info {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .price-form {
+      text-align: center;
+    }
+
+    form {
+      margin-top: 10px;
+    }
+
+    label {
+      font-size: 16px;
+    }
+
+    input[type="number"] {
+      width: 50px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    button {
+      background-color: #1da1f2;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0c8db1;
+    }
+
+    a.home-button {
+      display: inline-block;
+      background-color: #1da1f2;
+      color: white;
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    a.home-button:hover {
+      background-color: #0c8db1;
+    }
+  a(href="/api/admin", class="home-button") Back
+  .container
+    .product-info
+      h1= product.title
+      p Description: #{product.description}
+      img(src="data:image/jpg;base64," + product.image.toString('base64'))
+      p Price: #{product.price} &#x20bd
+    .price-form
+      form(action="/api/cart/add/"+product._id, method="post")
+        label(for="quantity") Quantity:
+        input(type="number", name="quantity", id="quantity", value="1")
+        button(type="submit") Add to Cart

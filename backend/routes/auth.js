@@ -1,10 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/user")
+const Cart = require("../models/cart");
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const {check, validationResult} = require("express-validator")
 const SECRET_KEY = process.env.SECRET_KEY
+
+router.get('/login', function (req, res) {
+    res.render('login');
+});
+router.get('/registration', function (req, res) {
+    res.render('registration');
+});
 
 router.post('/registration', 
     [
@@ -30,6 +38,21 @@ router.post('/registration',
         const hashPassword = await bcrypt.hash(password, 7)
         const user = new User({username, password: hashPassword})
         await user.save()
+        const maxAge = 3 * 60 * 60;
+        const token = jwt.sign(
+            { id: user._id, username, role: user.role },
+            SECRET_KEY,
+            {
+              expiresIn: maxAge, // 3hrs in sec
+            }
+        );
+        res.cookie("jwt", token, {
+            httpOnly: true,
+            maxAge: maxAge * 1000, // 3hrs in ms
+        });
+        const userId = user._id;
+        let cart = new Cart({ userId });
+        await cart.save();
         return res.json({message: "User was created"})
 
     } catch (error) {
@@ -41,7 +64,7 @@ router.post('/registration',
 router.post('/login', 
     async (req, res) => {
     try {
-        
+        const maxAge = 3 * 60 * 60;
         const {username, password} = req.body
 
         const user = await User.findOne({username})
@@ -55,19 +78,26 @@ router.post('/login',
             return res.status(400).json({message: "invalid password"})
         }
 
-        const token = jwt.sign({id: user.id}, SECRET_KEY, {expiresIn: "1h"})
-        return res.json({
-            token,
-            user: {
-                id: user.id,
-                username: user.username
-            }
-        })
+        const token = jwt.sign({id: user._id, username, role: user.role}, SECRET_KEY, {expiresIn: maxAge});
+        res.cookie("jwt", token, {
+            httpOnly: true,
+            maxAge: maxAge * 1000, // 3hrs in ms
+        });
+        res.status(201).json({
+        message: "User successfully Logged in",
+        user: user._id,
+        });
 
     } catch (error) {
         console.log(error)
         res.send({message: "Server error"})
     }
 })
+
+router.get("/logout", (req, res) => {
+    res.cookie("jwt", "", { maxAge: "1" })
+    return res.json({message: "User was logout"})
+  })
+
 
 module.exports = router

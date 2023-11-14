@@ -1,0 +1,69 @@
+extends layout
+
+block content
+    script.
+        window.onload = function() {
+         var usernameInput = document.getElementsByName('username')[0];
+         var passwordInput = document.getElementsByName('password')[0];
+         var addButton = document.getElementById('addButton');
+
+         usernameInput.addEventListener('input', checkInputs);
+         passwordInput.addEventListener('input', checkInputs);
+
+         function checkInputs() {
+            if (usernameInput.value !== '' && passwordInput.value !== '') {
+            addButton.disabled = false;
+            } else {
+            addButton.disabled = true;
+            }
+         }
+      };
+    style.
+     .home-button {
+          background-color: #000066;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-decoration: none;
+          text-align: center;
+          display: block;
+          margin: 0 auto;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+          transition: background-color 0.3s ease;
+        }
+
+     .home-button:hover {
+          background-color: #0000cc;
+        }
+     form {
+        margin-bottom: 20px;
+        }
+     label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        }
+     input[type="text"],
+     input[type="file"] {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        }
+     input[type="submit"] {
+        background-color: #337ab7;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        }
+     input[type="submit"]:hover {
+        background-color: #286090;
+        }
+    h1 Registration
+    form(action='/api/auth/registration' method='POST')
+      | username: 
+      input(type='text', name='username', value='')
+      |          password: 
+      input(type='text', name='password', value='')
+      input(type='submit', id='addButton', value='Add')

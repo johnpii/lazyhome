@@ -39,6 +39,7 @@ block content
           border: none;
           color: #333;
           padding: 10px 20px;
+          margin-left: 10px;
           border-radius: 5px;
           text-decoration: none;
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -54,6 +55,7 @@ block content
           color: white;
           padding: 10px 20px;
           border-radius: 5px;
+          margin-left: 10px;
           text-decoration: none;
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
           transition: background-color 0.3s ease;
@@ -86,6 +88,7 @@ block content
         tr
           th id
           th Title
+          th Description
           th Price
           th Image
       tbody
@@ -93,9 +96,11 @@ block content
           tr
             td #{product._id}
             td #{product.title}
-            td #{product.price}
+            td #{product.description}
+            td #{product.price} &#x20bd
             td
               img(src="data:image/jpg;base64," + product.image.toString('base64'))
             td 
               a(class="delete-button" href="/api/admin/products/delete/" + product._id) Delete
               a(class="update-button" href="/api/admin/products/update/" + product._id) Update
+              a(class="delete-button" href="/api/catalog/" + product._id) Catalog

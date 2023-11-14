@@ -27,6 +27,9 @@ block content
         color: white;
         padding: 10px 20px;
         border-radius: 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        margin-left: 10px;
         text-decoration: none;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease;
@@ -39,6 +42,7 @@ block content
           border: none;
           color: #333;
           padding: 10px 20px;
+          margin-left: 10px;
           border-radius: 5px;
           text-decoration: none;
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -54,6 +58,7 @@ block content
           color: white;
           padding: 10px 20px;
           border-radius: 5px;
+          margin-left: 10px;
           text-decoration: none;
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
           transition: background-color 0.3s ease;
@@ -79,7 +84,10 @@ block content
     .home-button:hover {
       background-color: #0000cc;
     }
-  a(href="/api/admin/users/add" class="add-button") Add User
+  a(href="/api/auth/registration" class="add-button") Add User
+  a(href="/api/auth/login" class="add-button") Login
+  a(class="delete-button" href="/api/auth/logout") Logout
+  a(class="delete-button" href="/api/cart") Cart
   h1 Users List
     table
       thead
@@ -87,12 +95,14 @@ block content
           th id
           th username
           th password
+          th role
       tbody
         each user in users
           tr
             td #{user._id}
             td #{user.username}
             td #{user.password}
+            td #{user.role}
             td 
               a(class="delete-button" href="/api/admin/users/delete/" + user._id) Delete
               a(class="update-button" href="/api/admin/users/update/" + user._id) Update

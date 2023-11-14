@@ -11,6 +11,8 @@ const index = require('./routes/index');
 const admin = require('./routes/admin');
 const auth = require('./routes/auth');
 const catalog = require('./routes/catalog');
+const cart = require('./routes/cart');
+const { adminAuth, userAuth } = require("./middleware/auth.js");
 
 const app = express();
 const router = express.Router();
@@ -28,9 +30,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 router.use('/', index);
+//router.use('/admin', adminAuth, admin);
 router.use('/admin', admin);
 router.use('/auth', auth);
 router.use('/catalog', catalog);
+router.use('/cart', cart);
 app.use('/api', router);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
