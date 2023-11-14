@@ -88,6 +88,7 @@ block content
         tr
           th id
           th Title
+          th Description
           th Price
           th Image
       tbody
@@ -95,6 +96,7 @@ block content
           tr
             td #{product._id}
             td #{product.title}
+            td #{product.description}
             td #{product.price} &#x20bd
             td
               img(src="data:image/jpg;base64," + product.image.toString('base64'))
