@@ -16,16 +16,18 @@ block content
         }
         window.onload = function() {
          var titleInput = document.getElementsByName('title')[0];
+         var descriptionInput = document.getElementsByName('description')[0];
          var priceInput = document.getElementsByName('price')[0];
          var imageInput = document.getElementsByName('image')[0];
          var addButton = document.getElementById('addButton');
 
          titleInput.addEventListener('input', checkInputs);
+         descriptionInput.addEventListener('input', checkInputs);
          priceInput.addEventListener('input', checkInputs);
          imageInput.addEventListener('change', checkInputs);
 
          function checkInputs() {
-            if (titleInput.value !== '' && priceInput.value !== '' && imageInput.value !== '') {
+            if (titleInput.value !== '' && descriptionInput.value !== '' && priceInput.value !== '' && imageInput.value !== '') {
             addButton.disabled = false;
             } else {
             addButton.disabled = true;
@@ -78,6 +80,8 @@ block content
     form(action='/api/admin/products/add' method='POST' enctype="multipart/form-data")
       | title: 
       input(type='text', name='title', value='')
+      | description: 
+      input(type='text', name='description', value='')
       |          price: 
       input(type='text', name='price', value='')
       |          image: 

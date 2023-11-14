@@ -103,13 +103,14 @@ router.get('/products/add', async function (req, res) {
 });
 router.post('/products/add', upload.single("image"), async (req, res) => {
     try {
-        if (!req.file || !req.body.title || !req.body.price) {
+        if (!req.file || !req.body.title || !req.body.description || !req.body.price) {
             return res.status(400).send("Please provide all the required fields");
         }
 
         let imageUploadObject = {
             image: req.file.buffer,
             title: req.body.title,
+            description: req.body.description,
             price: req.body.price
         };
         const uploadObject = new Product(imageUploadObject);
@@ -147,16 +148,21 @@ router.get('/products/update/:id', async (req, res) => {
 
 router.post('/products/update/:id', upload.single("image"), async (req, res) => {
     try{
+        if (!req.body.title || !req.body.description || !req.body.price) {
+            return res.status(400).send("Please provide all the required fields");
+        }
         let updatedProduct;
         if (req.file && req.file.buffer) {
             updatedProduct = {
                 image: req.file.buffer,
                 title: req.body.title,
+                description: req.body.description,
                 price: req.body.price
             };
         } else {
             updatedProduct = {
                 title: req.body.title,
+                description: req.body.description,
                 price: req.body.price
             };
         }

@@ -13,6 +13,10 @@ const schema = new db.Schema({
         type: Buffer,
         required: false,
     },
+    description: {
+        type: String,
+        required: false,
+    },
 
 }, { versionKey: false });
 

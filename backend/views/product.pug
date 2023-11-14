@@ -85,6 +85,7 @@ block content
   .container
     .product-info
       h1= product.title
+      p Description: #{product.description}
       img(src="data:image/jpg;base64," + product.image.toString('base64'))
       p Price: #{product.price} &#x20bd
     .price-form
