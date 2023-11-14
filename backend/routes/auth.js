@@ -96,7 +96,7 @@ router.post('/login',
 
 router.get("/logout", (req, res) => {
     res.cookie("jwt", "", { maxAge: "1" })
-    res.redirect("/api")
+    return res.json({message: "User was logout"})
   })
 
 
