@@ -14,6 +14,6 @@ const schema = new db.Schema({
         required: false,
     },
 
-});
+}, { versionKey: false });
 
 module.exports = db.model('products', schema)
