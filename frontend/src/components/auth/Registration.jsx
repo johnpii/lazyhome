@@ -1,8 +1,8 @@
+import { register } from "../../http/post";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../../http/post";
 
-const Login = () => {
+const Registration = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,17 +32,14 @@ const Login = () => {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            login(username, password);
+            register(username, password);
           }}
         >
-          Войти
+          Зарегистрироваться
         </button>
       </form>
-      <p>
-        Нет аккаунта? <Link to="/registration">Зарегистрироваться</Link>
-      </p>
     </>
   );
 };
 
-export default Login;
+export default Registration;

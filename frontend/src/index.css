@@ -47,6 +47,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  width: fit-content;
 }
 button:hover {
   border-color: #646cff;
@@ -55,7 +56,10 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+input{
+  background: transparent;
+  border-width: 2px;
+}
 
 @tailwind base;
 @tailwind components;
