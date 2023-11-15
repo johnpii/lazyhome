@@ -67,7 +67,8 @@ block content
           .item-details
             h2 #{item.product.title}
             p Quantity: #{item.quantity}
-            p Price: $#{item.product.price}
+            p Price: #{item.product.price} &#x20bd
+            p Total: #{item.total} &#x20bd
             a(class="delete-button" href="/api/cart/remove/" + item.product._id) Remove
     else
       p Your cart is empty.
