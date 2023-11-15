@@ -1,11 +1,11 @@
 import { register } from "../../http/post";
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   return (
     <>
       <form className="max-w-md h-80 flex flex-col border-2 text-left mx-auto mt-40">
@@ -33,6 +33,7 @@ const Registration = () => {
           onClick={(e) => {
             e.preventDefault();
             register(username, password);
+            navigate("/login");
           }}
         >
           Зарегистрироваться
