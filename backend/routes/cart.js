@@ -31,10 +31,7 @@ router.get('/', async (req, res) => {
         total: item.quantity * product.price // Добавление общей стоимости
       };
     });
-
-    res.render('cart', {
-      cartItems: cartItems
-    });
+    res.json({cartItems: cartItems});
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Server error' });
