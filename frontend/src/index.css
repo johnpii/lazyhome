@@ -22,7 +22,8 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #999de5;
+  color: #00ACC1;
+  transition: color 0.8s;
 }
 
 body {
@@ -50,7 +51,8 @@ button {
   width: fit-content;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #00ACC1;
+  transition: border;
 }
 button:focus,
 button:focus-visible {
