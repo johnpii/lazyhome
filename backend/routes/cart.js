@@ -22,15 +22,19 @@ router.get('/', async (req, res) => {
     // Получение информации о товарах в корзине
     const products = await Product.find({ _id: { $in: cart.items.map(item => item.productId) } });
 
-    // Создание массива объектов товаров с количеством
+    // Создание массива объектов товаров с количеством и общей стоимостью
     const cartItems = cart.items.map(item => {
       const product = products.find(p => p._id.toString() === item.productId.toString());
-      return { product, quantity: item.quantity };
+      return {
+        product,
+        quantity: item.quantity,
+        total: item.quantity * product.price // Добавление общей стоимости
+      };
     });
 
     res.render('cart', {
       cartItems: cartItems
-  });
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Server error' });
@@ -47,7 +51,9 @@ router.post('/add/:productId', async (req, res) => {
       const userId = decoded.id;
       const quantity = parseInt(req.body.quantity);
       const productId = req.params.productId;
-
+      if (quantity <= 0) {
+          return res.status(400).json({ message: 'Quantity must be greater than 0' });
+      }
       let cart = await Cart.findOne({ userId });
       if (!cart) {
           return res.status(404).json({ message: 'Cart not found' });
@@ -58,7 +64,6 @@ router.post('/add/:productId', async (req, res) => {
           return res.status(404).json({ message: 'Product not found' });
       }
 
-      // Проверка наличия товара в корзине
       const item = cart.items.find(item => item.productId === productId);
       if (item) {
           // Если товар уже есть в корзине, добавляем его количество к существующему
