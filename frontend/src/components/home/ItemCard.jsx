@@ -1,8 +1,7 @@
 import { imagefrombuffer } from "imagefrombuffer";
+import { formatPrice } from "../../services/price.service";
 
 const ItemCard = ({ product }) => {
-  const options1 = { style: "currency", currency: "RUB" };
-  const numberFormat1 = new Intl.NumberFormat("ru-RU", options1);
   return (
     <div
       className="w-[240px] h-[338.26px] flex flex-col justify-between border-2 
@@ -16,8 +15,8 @@ const ItemCard = ({ product }) => {
         })}
         alt="item"
       />
-      <h3 className="">{product.title}</h3>
-      <p className="">{numberFormat1.format(product.price)}</p>
+      <h1 className="">{product.title}</h1>
+      <p className="">{formatPrice(product.price)}</p>
     </div>
   );
 };
