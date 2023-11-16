@@ -1,4 +1,4 @@
-import { register } from "../../http/post";
+import { register } from "../../services/auth.service";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +33,7 @@ const Registration = () => {
           onClick={(e) => {
             e.preventDefault();
             register(username, password);
-            navigate("/login");
+            navigate("../");
           }}
         >
           Зарегистрироваться
