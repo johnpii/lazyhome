@@ -12,7 +12,7 @@ const Home = () => {
     const fetchData = async () => {
       const data = await fetchProducts.getAll();
       setProductList(data);
-      console.log(data);
+      console.log(data); //TODO: remove log
     };
     fetchData();
   }, []);
