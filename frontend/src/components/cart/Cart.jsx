@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { getCart } from "../../http/cart";
+import { getCart } from "../../services/cart.service";
+import CartItem from "./CartItem";
+import Nav from "../Nav";
 
 const Cart = () => {
   const [cart, setCart] = useState({});
@@ -7,11 +9,25 @@ const Cart = () => {
     const fetchData = async () => {
       const data = await getCart();
       setCart(data);
-      console.log(data);
+      console.log(data); //TODO: remove log
     };
     fetchData();
   }, []);
-  return <div>Cart</div>;
+  return (
+    <>
+      <Nav />
+      <h1 className="max-w-screen-2xl mx-auto mt-20 text-3xl font-bold text-left">
+        Корзина
+      </h1>
+      <div className="max-w-screen-2xl mx-auto mt-20">
+        {cart.length ? (
+          cart.map((item) => <CartItem cart={item} />)
+        ) : (
+          <p>Корзина пуста</p>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default Cart;
