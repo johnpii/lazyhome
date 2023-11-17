@@ -14,6 +14,7 @@ const catalog = require('./routes/catalog');
 const cart = require('./routes/cart');
 const { adminAuth, userAuth } = require("./middleware/auth.js");
 
+
 const app = express();
 const router = express.Router();
 
@@ -57,6 +58,8 @@ if (app.get('env') === 'development') {
         });
     });
 }
+
+
 
 // production error handler
 // no stacktraces leaked to user
