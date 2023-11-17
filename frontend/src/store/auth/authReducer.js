@@ -1,4 +1,3 @@
-import { checkLogin } from "../../services/auth.service";
 const initialState = {
   isAuthed: false,
 };
