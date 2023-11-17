@@ -13,7 +13,7 @@ const auth = require('./routes/auth');
 const catalog = require('./routes/catalog');
 const cart = require('./routes/cart');
 const { adminAuth, userAuth } = require("./middleware/auth.js");
-var cors = require('cors')
+
 
 const app = express();
 const router = express.Router();
@@ -58,11 +58,7 @@ if (app.get('env') === 'development') {
     });
 }
 
-app.use(cors({
-    origin: ["lazyhome-deploy.vercel.app"],
-    methods: ["POST", "GET"],
-    credentails: true
-}));
+
 
 // production error handler
 // no stacktraces leaked to user
