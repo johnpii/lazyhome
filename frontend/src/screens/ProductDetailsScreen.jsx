@@ -1,10 +1,10 @@
 import { imagefrombuffer } from "imagefrombuffer";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { fetchProducts } from "../../services/product.service";
-import { formatPrice } from "../../services/price.service";
-import { addItem } from "../../services/cart.service";
-import Nav from "../Nav";
+import { fetchProducts } from "../services/product.service";
+import { formatPrice } from "../services/price.service";
+import { addItem } from "../services/cart.service";
+import Nav from "../components/nav/Nav";
 
 const ProductDetails = () => {
   const { id } = useParams();

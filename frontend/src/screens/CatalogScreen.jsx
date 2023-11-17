@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import ItemCard from "./ItemCard";
-import { fetchProducts } from "../../services/product.service";
+import ItemCard from "../components/catalog/ItemCard";
+import { fetchProducts } from "../services/product.service";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const CatalogScreen = () => {
   const [productList, setProductList] = useState(null);
 
   useEffect(() => {

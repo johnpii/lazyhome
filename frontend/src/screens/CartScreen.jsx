@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getCart } from "../../services/cart.service";
-import CartItem from "./CartItem";
+import { getCart } from "../services/cart.service";
+import CartItem from "../components/cart/CartItem";
 
 const Cart = () => {
   const [cart, setCart] = useState({});

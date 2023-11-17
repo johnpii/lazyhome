@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/home/Home";
-import ProductDetails from "./components/product-details/ProductDetails";
-import Login from "./components/auth/Login";
-import Registration from "./components/auth/Registration";
-import Cart from "./components/cart/Cart";
-import Nav from "./components/Nav";
+import CatalogScreen from "./screens/CatalogScreen";
+import ProductDetailsScreen from "./screens/ProductDetailsScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegistrationScreen from "./screens/RegistrationScreen";
+import CartScreen from "./screens/CartScreen";
+import Nav from "./components/nav/Nav";
 const App = () => {
   return (
     <BrowserRouter>
