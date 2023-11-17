@@ -4,10 +4,11 @@ import ProductDetails from "./components/product-details/ProductDetails";
 import Login from "./components/auth/Login";
 import Registration from "./components/auth/Registration";
 import Cart from "./components/cart/Cart";
-
+import Nav from "./components/Nav";
 const App = () => {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
         <Route path="*" element={<Home />}></Route>
         <Route path="/" element={<Home />}></Route>

@@ -32,7 +32,6 @@ const ProductDetails = () => {
   };
   return (
     <>
-      <Nav />
       {product ? (
         <div className="text-left p-7">
           <Link to="/">Вернуться</Link>

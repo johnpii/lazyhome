@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCart } from "../../services/cart.service";
 import CartItem from "./CartItem";
-import Nav from "../Nav";
 
 const Cart = () => {
   const [cart, setCart] = useState({});
@@ -15,7 +14,6 @@ const Cart = () => {
   }, []);
   return (
     <>
-      <Nav />
       <h1 className="max-w-screen-2xl mx-auto mt-20 text-3xl font-bold text-left">
         Корзина
       </h1>
