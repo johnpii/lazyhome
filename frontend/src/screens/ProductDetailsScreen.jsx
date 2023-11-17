@@ -1,12 +1,11 @@
 import { imagefrombuffer } from "imagefrombuffer";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { fetchProducts } from "../../services/product.service";
-import { formatPrice } from "../../services/price.service";
-import { addItem } from "../../services/cart.service";
-import Nav from "../Nav";
+import { fetchProducts } from "../services/product.service";
+import { formatPrice } from "../services/price.service";
+import { addItem } from "../services/cart.service";
 
-const ProductDetails = () => {
+const ProductDetailsScreen = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [itemCount, setItemCount] = useState(1);
@@ -32,7 +31,6 @@ const ProductDetails = () => {
   };
   return (
     <>
-      <Nav />
       {product ? (
         <div className="text-left p-7">
           <Link to="/">Вернуться</Link>
@@ -58,7 +56,7 @@ const ProductDetails = () => {
           shadow-cyan-600 border-cyan-600 border-solid px-10 py-7 min-w-fit"
             >
               <p className="text-semibold text-2xl">
-                {formatPrice(product.price)}
+                {formatPrice(product.price * itemCount)}
               </p>
               <div className="max-w-[100px] mt-5 flex justify-between text-semibold items-center text-3xl">
                 <button
@@ -89,4 +87,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default ProductDetailsScreen;

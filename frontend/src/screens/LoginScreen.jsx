@@ -1,15 +1,16 @@
-import { register } from "../../services/auth.service";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { login } from "../services/auth.service";
 
-const Registration = () => {
+const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
   return (
     <>
       <form className="max-w-md h-80 flex flex-col border-2 text-left mx-auto mt-40">
-        <h1 className="text-center mt-10">Регистрация</h1>
+        <h1 className="text-center mt-10">Вход</h1>
         <div className="mt-10 mx-auto">
           <input
             className=""
@@ -32,15 +33,21 @@ const Registration = () => {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            register(username, password);
-            navigate("../");
+            login(username, password);
+            navigate("/");
           }}
         >
-          Зарегистрироваться
+          Войти
         </button>
+        <p className="text-center mt-10 ">
+          Нет аккаунта?{" "}
+          <Link to="/registration" className="font-bold">
+            Зарегистрироваться
+          </Link>
+        </p>
       </form>
     </>
   );
 };
 
-export default Registration;
+export default LoginScreen;
