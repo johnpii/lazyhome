@@ -28,4 +28,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartScreen;
