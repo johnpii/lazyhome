@@ -4,9 +4,8 @@ import { useParams, Link } from "react-router-dom";
 import { fetchProducts } from "../services/product.service";
 import { formatPrice } from "../services/price.service";
 import { addItem } from "../services/cart.service";
-import Nav from "../components/nav/Nav";
 
-const ProductDetails = () => {
+const ProductDetailsScreen = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [itemCount, setItemCount] = useState(1);
