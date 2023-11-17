@@ -14,6 +14,7 @@ const catalog = require('./routes/catalog');
 const cart = require('./routes/cart');
 const { adminAuth, userAuth } = require("./middleware/auth.js");
 
+
 const app = express();
 const router = express.Router();
 
@@ -34,6 +35,7 @@ router.use('/', index);
 router.use('/admin', admin);
 router.use('/auth', auth);
 router.use('/catalog', catalog);
+//router.use('/cart', userAuth, cart);
 router.use('/cart', cart);
 app.use('/api', router);
 // catch 404 and forward to error handler
@@ -56,6 +58,8 @@ if (app.get('env') === 'development') {
         });
     });
 }
+
+
 
 // production error handler
 // no stacktraces leaked to user
