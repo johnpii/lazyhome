@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { getCart } from "../../services/cart.service";
-import CartItem from "./CartItem";
-import Nav from "../Nav";
+import { getCart } from "../services/cart.service";
+import CartItem from "../components/cart/CartItem";
 
-const Cart = () => {
+const CartScreen = () => {
   const [cart, setCart] = useState({});
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +14,6 @@ const Cart = () => {
   }, []);
   return (
     <>
-      <Nav />
       <h1 className="max-w-screen-2xl mx-auto mt-20 text-3xl font-bold text-left">
         Корзина
       </h1>
@@ -30,4 +28,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartScreen;

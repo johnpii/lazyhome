@@ -1,20 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/home/Home";
-import ProductDetails from "./components/product-details/ProductDetails";
-import Login from "./components/auth/Login";
-import Registration from "./components/auth/Registration";
-import Cart from "./components/cart/Cart";
-
+import CatalogScreen from "./screens/CatalogScreen";
+import ProductDetailsScreen from "./screens/ProductDetailsScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegistrationScreen from "./screens/RegistrationScreen";
+import CartScreen from "./screens/CartScreen";
+import Nav from "./components/nav/Nav";
 const App = () => {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
-        <Route path="*" element={<Home />}></Route>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/registration" element={<Registration />}></Route>
-        <Route path="/product/:id" element={<ProductDetails />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="*" element={<CatalogScreen />}></Route>
+        <Route path="/" element={<CatalogScreen />}></Route>
+        <Route path="/login" element={<LoginScreen />}></Route>
+        <Route path="/registration" element={<RegistrationScreen />}></Route>
+        <Route path="/product/:id" element={<ProductDetailsScreen />}></Route>
+        <Route path="/cart" element={<CartScreen />}></Route>
       </Routes>
     </BrowserRouter>
   );
