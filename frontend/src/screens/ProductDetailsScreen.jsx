@@ -56,7 +56,7 @@ const ProductDetailsScreen = () => {
           shadow-cyan-600 border-cyan-600 border-solid px-10 py-7 min-w-fit"
             >
               <p className="text-semibold text-2xl">
-                {formatPrice(product.price)}
+                {formatPrice(product.price * itemCount)}
               </p>
               <div className="max-w-[100px] mt-5 flex justify-between text-semibold items-center text-3xl">
                 <button
