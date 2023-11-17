@@ -5,7 +5,26 @@ import LoginScreen from "./screens/LoginScreen";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import CartScreen from "./screens/CartScreen";
 import Nav from "./components/nav/Nav";
+import { checkLogin } from "./services/auth.service";
+import { useDispatch, useSelector } from "react-redux";
+import { setAuthStatus } from "./store/auth/authActions";
+import { useEffect } from "react";
+
 const App = () => {
+  const dispatch = useDispatch();
+  const isAuthed = useSelector((state) => state.auth.isAuthed);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const isAuthenticated = await checkLogin();
+        dispatch(setAuthStatus(isAuthenticated));
+      } catch (error) {
+        console.error("Error checking authentication:", error);
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <Nav />
