@@ -35,6 +35,7 @@ router.use('/', index);
 router.use('/admin', admin);
 router.use('/auth', auth);
 router.use('/catalog', catalog);
+//router.use('/cart', userAuth, cart);
 router.use('/cart', cart);
 app.use('/api', router);
 // catch 404 and forward to error handler
