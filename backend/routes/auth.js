@@ -99,5 +99,24 @@ router.get("/logout", (req, res) => {
     return res.json({message: "User was logout"})
   })
 
+router.get('/checkJwt', (req, res) => {
+    try {
+        const token = req.cookies.jwt;
+        if (!token) {
+            return res.status(401).json({ message: 'No token' });
+        }
+
+        jwt.verify(token, SECRET_KEY, (err, decoded) => {
+            if(err) {
+                return res.status(401).json({ message: 'Invalid token' });
+            }
+            res.status(200).json({ message: 'Valid token', decoded });
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
 
 module.exports = router
