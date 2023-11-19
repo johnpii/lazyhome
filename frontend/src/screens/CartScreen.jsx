@@ -14,7 +14,7 @@ const CartScreen = () => {
     fetchData();
   }, [isDeleted]);
   return (
-    <>
+    <div className="px-4">
       <h1 className="max-w-screen-2xl mx-auto mt-20 text-3xl font-bold text-left">
         Корзина
       </h1>
@@ -27,7 +27,7 @@ const CartScreen = () => {
           <p>Корзина пуста</p>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
