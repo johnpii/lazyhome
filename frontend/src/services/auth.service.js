@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const register = async (username, password) => {
   try {
-    const res = await axios.post("/api/auth/registration", {
+    const res = await axios.post("https://lazyhome.onrender.com/api/auth/registration", {
       username,
       password,
     });
@@ -14,7 +14,7 @@ export const register = async (username, password) => {
 
 export const login = async (username, password) => {
   try {
-    const res = await axios.post("/api/auth/login", {
+    const res = await axios.post("https://lazyhome.onrender.com/api/auth/login", {
       username,
       password,
     });
@@ -26,7 +26,7 @@ export const login = async (username, password) => {
 
 export const checkLogin = async () => {
   return axios
-    .get("/api/auth/checkJwt", {
+    .get("https://lazyhome.onrender.com/api/auth/checkJwt", {
       withCredentials: true,
     })
     .then((res) => {

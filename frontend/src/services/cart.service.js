@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getCart = async () => {
   try {
-    const response = await axios.get("/api/cart", {
+    const response = await axios.get("https://lazyhome.onrender.com/api/cart", {
       withCredentials: true,
     });
     return response.data.cartItems;
@@ -13,7 +13,7 @@ export const getCart = async () => {
 
 export const addItem = async (productId, quantity) => {
   try {
-    await axios.post(`/api/cart/add/${productId}`, {
+    await axios.post(`https://lazyhome.onrender.com/api/cart/add/${productId}`, {
       quantity,
     });
   } catch (e) {
@@ -23,7 +23,7 @@ export const addItem = async (productId, quantity) => {
 
 export const removeItem = async (productId) => {
   try {
-    await axios.get(`/api/cart/remove/${productId}`);
+    await axios.get(`https://lazyhome.onrender.com/api/cart/remove/${productId}`);
   } catch (e) {
     console.log(e);
   }
