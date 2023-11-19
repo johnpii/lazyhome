@@ -33,7 +33,8 @@ const Registration = () => {
           onClick={(e) => {
             e.preventDefault();
             register(username, password);
-            navigate("../");
+            navigate("/");
+            window.location.reload();
           }}
         >
           Зарегистрироваться
