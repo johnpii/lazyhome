@@ -7,14 +7,13 @@ import CartScreen from "./screens/CartScreen";
 import Nav from "./components/nav/Nav";
 import ProfileScreen from "./screens/ProfileScreen";
 import { checkLogin } from "./services/auth.service";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setAuthStatus } from "./store/auth/authActions";
 import { useEffect } from "react";
 import ProtectedRoutes from "./components/protected/ProtectedRoutes";
 
 const App = () => {
   const dispatch = useDispatch();
-  const isAuthed = useSelector((state) => state.auth.isAuthed);
   useEffect(() => {
     const fetchData = async () => {
       try {
