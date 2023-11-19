@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import { getCart } from "../services/cart.service";
 import CartItem from "../components/cart/CartItem";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { Link } from "react-router-dom";
+import LoginScreen from "./LoginScreen";
 
 const CartScreen = () => {
+  const isAuthed = useSelector((state) => state.auth.isAuthed);
   const [cart, setCart] = useState({});
   const [isDeleted, setIsDeleted] = useState(false);
   useEffect(() => {
@@ -18,15 +22,31 @@ const CartScreen = () => {
       <h1 className="max-w-screen-2xl mx-auto mt-20 text-3xl font-bold text-left">
         Корзина
       </h1>
-      <div className="max-w-screen-2xl mx-auto mt-20">
-        {cart.length ? (
-          cart.map((item) => (
-            <CartItem cart={item} rerender={{ isDeleted, setIsDeleted }} />
-          ))
-        ) : (
-          <p>Корзина пуста</p>
-        )}
-      </div>
+      {isAuthed ? (
+        <div className="max-w-screen-2xl mx-auto mt-20">
+          {cart.length ? (
+            cart.map((item) => (
+              <CartItem cart={item} rerender={{ isDeleted, setIsDeleted }} />
+            ))
+          ) : (
+            <p>Корзина пуста</p>
+          )}
+        </div>
+      ) : (
+        <div className="mx-auto">
+          <h1 className="text-2xl font-semibold mt-10">
+            Просматривать корзину можно только авторизованным пользователям.
+          </h1>
+          <Link to="/login">
+            <button
+              className="mt-10 border-2 rounded-lg border-cyan-400 py-3 px-6 min-w-max
+            font-semibold text-xl"
+            >
+              Войти
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
