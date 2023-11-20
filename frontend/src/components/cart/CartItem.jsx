@@ -24,7 +24,8 @@ const CartItem = ({ cart, rerender }) => {
         <button
           onClick={() => {
             removeItem(cart.product._id);
-            rerender.setIsDeleted(!rerender.isDeleted);
+            // rerender.setIsDeleted(!rerender.isDeleted);
+            window.location.reload();
           }}
         >
           Удалить
