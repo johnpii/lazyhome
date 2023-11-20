@@ -3,7 +3,6 @@ import { getCart } from "../services/cart.service";
 import CartItem from "../components/cart/CartItem";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
-import LoginScreen from "./LoginScreen";
 
 const CartScreen = () => {
   const isAuthed = useSelector((state) => state.auth.isAuthed);
@@ -18,12 +17,10 @@ const CartScreen = () => {
     fetchData();
   }, [isDeleted]);
   return (
-    <div className="px-4">
-      <h1 className="max-w-screen-2xl mx-auto mt-20 text-3xl font-bold text-left">
-        Корзина
-      </h1>
+    <div className="px-4 max-w-7xl mx-auto">
+      <h1 className="mx-auto mt-20 text-3xl font-bold text-left">Корзина</h1>
       {isAuthed ? (
-        <div className="max-w-screen-2xl mx-auto mt-20">
+        <div className="mx-auto mt-20">
           {cart.length ? (
             cart.map((item) => (
               <CartItem cart={item} rerender={{ isDeleted, setIsDeleted }} />
