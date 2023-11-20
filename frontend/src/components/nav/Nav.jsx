@@ -1,10 +1,13 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 const Nav = () => {
+  const isAuthed = useSelector((state) => state.auth.isAuthed);
   const navigation = [
     { link: "/home", name: "Lazy Home" },
     { link: "/catalog", name: "Каталог" },
     { link: "/cart", name: "Корзина" },
-    { link: "/login", name: "Войти" },
+    // { link: "/login", name: "Войти" },
   ];
   return (
     <div className="max-w-full bg-[#494949] px-4">
@@ -16,6 +19,19 @@ const Nav = () => {
             </Link>
           </li>
         ))}
+        {isAuthed ? (
+          <li>
+            <Link to="/profile" className="active:text-cyan-200">
+              Профиль
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <Link to="/login" className="active:text-cyan-200">
+              Войти
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
   );

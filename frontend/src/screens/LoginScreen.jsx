@@ -13,7 +13,6 @@ const LoginScreen = () => {
         <h1 className="text-center mt-10">Вход</h1>
         <div className="mt-10 mx-auto">
           <input
-            className=""
             type="text"
             name="nickname"
             placeholder="Имя пользователя"
@@ -35,6 +34,7 @@ const LoginScreen = () => {
             e.preventDefault();
             login(username, password);
             navigate("/");
+            window.location.reload();
           }}
         >
           Войти
