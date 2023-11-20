@@ -24,6 +24,15 @@ export const login = async (username, password) => {
   }
 };
 
+export const logout = async () => {
+  return axios
+    .get("/api/auth/logout", {
+      withCredentials: true,
+    })
+    .then((res) => res.data)
+    .catch((e) => console.log(e));
+};
+
 export const checkLogin = async () => {
   return axios
     .get("/api/auth/checkJwt", {

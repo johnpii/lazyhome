@@ -16,8 +16,10 @@ const CatalogScreen = () => {
     fetchData();
   }, []);
   return (
-    <>
-      <h1 className="text-2xl mt-8">Товары</h1>
+    <div className="px-4">
+      <h1 className="mx-auto mt-20 text-3xl font-bold text-left max-w-7xl">
+        Товары
+      </h1>
       <div className="flex justify-around flex-wrap gap-10 max-w-7xl mx-auto mt-9 pb-10">
         {productList
           ? productList.map((item) => (
@@ -27,7 +29,7 @@ const CatalogScreen = () => {
             ))
           : "Loading..."}
       </div>
-    </>
+    </div>
   );
 };
 
