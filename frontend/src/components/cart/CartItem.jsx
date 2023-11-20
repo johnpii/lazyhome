@@ -4,11 +4,11 @@ import { removeItem } from "../../services/cart.service";
 import { formatPrice } from "../../services/price.service";
 const CartItem = ({ cart, rerender }) => {
   return (
-    <div className="flex justify-between py-10 text-2xl font-semibold border-b-2 last:border-0">
+    <div className="flex justify-between py-10 text-xl font-semibold border-b-2 last:border-0">
       <div className="w-fit">
         <Link to={`../product/${cart.product._id}`}>
           <img
-            className="h-60 w-60"
+            className="h-40 w-40"
             src={imagefrombuffer({
               type: cart.product.image.type,
               data: cart.product.image.data,
@@ -24,7 +24,8 @@ const CartItem = ({ cart, rerender }) => {
         <button
           onClick={() => {
             removeItem(cart.product._id);
-            rerender.setIsDeleted(!rerender.isDeleted);
+            // rerender.setIsDeleted(!rerender.isDeleted);
+            window.location.reload();
           }}
         >
           Удалить

@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { setAuthStatus } from "./store/auth/authActions";
 import { useEffect } from "react";
 import ProtectedRoutes from "./components/protected/ProtectedRoutes";
+import AboutScreen from "./screens/AboutScreen";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,6 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path="*" element={<CatalogScreen />}></Route>
-        <Route path="/" element={<CatalogScreen />}></Route>
         <Route path="/login" element={<LoginScreen />}></Route>
         <Route element={<ProtectedRoutes />}>
           <Route path="/profile" element={<ProfileScreen />}></Route>
@@ -39,6 +39,7 @@ const App = () => {
         <Route path="/registration" element={<RegistrationScreen />}></Route>
         <Route path="/product/:id" element={<ProductDetailsScreen />}></Route>
         <Route path="/cart" element={<CartScreen />}></Route>
+        <Route path="/about" element={<AboutScreen />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   const isAuthed = useSelector((state) => state.auth.isAuthed);
   const navigation = [
-    { link: "/home", name: "Lazy Home" },
+    { link: "/about", name: "Lazy Home" },
     { link: "/catalog", name: "Каталог" },
     { link: "/cart", name: "Корзина" },
     // { link: "/login", name: "Войти" },
