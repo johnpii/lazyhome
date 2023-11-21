@@ -21,6 +21,23 @@ block content
         max-width: 100px;
         height: auto;
       }
+      .home-button {
+      background-color: #000066;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+      }
+
+      .home-button:hover {
+      background-color: #0000cc;
+      }
       .add-button {
         background-color: #33cc33;
         border: none;
@@ -35,52 +52,47 @@ block content
       background-color: #66ff66;
       }
       .delete-button {
-          background-color: #ffd700;
-          border: none;
-          color: #333;
-          padding: 10px 20px;
-          margin-left: 10px;
-          border-radius: 5px;
-          text-decoration: none;
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-          transition: background-color 0.3s ease;
-        }
-
-    .delete-button:hover {
-          background-color: #ffcc00;
-        }
-    .update-button {
-          background-color: #5a9aa5;
-          border: none;
-          color: white;
-          padding: 10px 20px;
-          border-radius: 5px;
-          margin-left: 10px;
-          text-decoration: none;
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-          transition: background-color 0.3s ease;
-        }
-
-    .update-button:hover {
-          background-color: #326b77;
-        }
-    .home-button {
-      background-color: #000066;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      text-align: center;
-      display: block;
-      margin: 0 auto;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s ease;
-    }
-
-    .home-button:hover {
-      background-color: #0000cc;
-    }
+        background-color: #cc3333;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-left: 10px;
+        text-decoration: none;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+      .delete-button:hover {
+      background-color: #ff6666;
+      }
+      .update-button {
+        background-color: #3333cc;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        margin-left: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+      .update-button:hover {
+      background-color: #6666ff;
+      }
+      .catalog-button {
+        background-color: #cc9933;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        margin-left: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+      .catalog-button:hover {
+      background-color: #ffcc66;
+      }
   a(href="/api/admin/products/add" class="add-button") Add Product
   h1 Product List
     table
@@ -103,4 +115,4 @@ block content
             td 
               a(class="delete-button" href="/api/admin/products/delete/" + product._id) Delete
               a(class="update-button" href="/api/admin/products/update/" + product._id) Update
-              a(class="delete-button" href="/api/catalog/" + product._id) Catalog
+              a(class="catalog-button" href="/api/catalog/" + product._id) Catalog
