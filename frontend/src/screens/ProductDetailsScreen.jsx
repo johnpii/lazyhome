@@ -78,12 +78,16 @@ const ProductDetailsScreen = () => {
                 className="mt-5 border-2 rounded-lg border-cyan-400 py-3 px-6 min-w-max
             font-semibold text-xl"
                 onClick={() => {
-                  addItem(product._id, itemCount);
-                  toast.custom((t) => (
-                    <div className="mt-20 p-4 border rounded-md border-cyan-400 bg-zinc-800">
-                      Товар добавлен в корзину
-                    </div>
-                  ));
+                  try {
+                    addItem(product._id, itemCount);
+                    toast.custom((t) => (
+                      <div className="mt-20 p-4 border rounded-md border-cyan-400 bg-zinc-800">
+                        Товар добавлен в корзину
+                      </div>
+                    ));
+                  } catch (e) {
+                    console.log(e.response);
+                  }
                 }}
               >
                 Добавить в корзину
