@@ -32,8 +32,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Enable CORS
 app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'https://lazyhomeshop.onrender.com');
+    res.header('Access-Control-Allow-Origin', 'https://lazyhome-front-ccr6.onrender.com');
+    res.header("Access-Control-Allow-Credentials", true);
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header("Access-Control-Allow-Methods", "POST, PUT, DELETE, OPTIONS, GET");
     next();
   });
 
