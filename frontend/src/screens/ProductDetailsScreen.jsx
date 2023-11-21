@@ -9,6 +9,7 @@ const ProductDetailsScreen = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [itemCount, setItemCount] = useState(1);
+  const [text, setText] = useState("Добавить в корзину");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,9 +74,10 @@ const ProductDetailsScreen = () => {
             font-semibold text-xl"
                 onClick={() => {
                   addItem(product._id, itemCount);
+                  setText("Товар добавлен в корзину");
                 }}
               >
-                Добавить в корзину
+                {text}
               </button>
             </div>
           </div>
