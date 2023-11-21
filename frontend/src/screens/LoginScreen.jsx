@@ -46,7 +46,7 @@ const LoginScreen = () => {
           Войти
         </button>
         <p className="text-center mt-8">
-          Нет аккаунта?{" "}
+          Нет аккаунта?
           <Link to="/registration" className="font-bold text-cyan-400">
             Зарегистрироваться
           </Link>
