@@ -4,12 +4,12 @@ import { useParams, Link } from "react-router-dom";
 import { fetchProducts } from "../services/product.service";
 import { formatPrice } from "../services/price.service";
 import { addItem } from "../services/cart.service";
+import { Toaster, toast } from "sonner";
 
 const ProductDetailsScreen = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [itemCount, setItemCount] = useState(1);
-  const [text, setText] = useState("Добавить в корзину");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,10 +32,15 @@ const ProductDetailsScreen = () => {
   };
   return (
     <>
+      <Toaster richColors position="top-center" />
       {product ? (
         <div className="text-left p-7">
-          <Link to="/">Вернуться</Link>
-          <h2 className="py-10 ml-24 font-bold text-3xl">{product.title}</h2>
+          <Link to="../" className="border border-cyan-400 rounded-md p-3">
+            Назад
+          </Link>
+          <h2 className="py-10 max-w-screen-2xl mx-auto  font-bold text-3xl">
+            {product.title}
+          </h2>
           <div className="max-w-screen-2xl flex justify-between mx-auto text-left border-w-2 pt-10">
             <div>
               <img
@@ -74,10 +79,14 @@ const ProductDetailsScreen = () => {
             font-semibold text-xl"
                 onClick={() => {
                   addItem(product._id, itemCount);
-                  setText("Товар добавлен в корзину");
+                  toast.custom((t) => (
+                    <div className="mt-20 p-4 border rounded-md border-cyan-400 bg-zinc-800">
+                      Товар добавлен в корзину
+                    </div>
+                  ));
                 }}
               >
-                {text}
+                Добавить в корзину
               </button>
             </div>
           </div>
