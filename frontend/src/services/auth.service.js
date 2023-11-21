@@ -14,7 +14,7 @@ export const register = async (username, password) => {
     );
     console.log(res.data.message);
   } catch (e) {
-    console.log(e);
+    console.log(e.response);
   }
 };
 
@@ -32,7 +32,7 @@ export const login = async (username, password) => {
     );
     console.log(res.data.message);
   } catch (e) {
-    console.log(e);
+    console.log(e.response);
   }
 };
 
@@ -42,7 +42,7 @@ export const logout = async () => {
       withCredentials: true,
     })
     .then((res) => res.data)
-    .catch((e) => console.log(e));
+    .catch((e) => console.log(e.response));
 };
 
 export const checkLogin = async () => {
@@ -53,7 +53,7 @@ export const checkLogin = async () => {
     .then((res) => {
       return res.data.decoded ? true : false;
     })
-    .catch((e) => console.log(e));
+    .catch((e) => console.log(e.response));
 };
 // export const checkLogin = async () => {
 //   try {
