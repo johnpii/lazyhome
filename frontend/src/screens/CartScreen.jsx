@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const CartScreen = () => {
   const isAuthed = useSelector((state) => state.auth.isAuthed);
   const [cart, setCart] = useState({});
-  const [isDeleted, setIsDeleted] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCart();
@@ -15,16 +14,14 @@ const CartScreen = () => {
       console.log(data); //TODO: remove log
     };
     fetchData();
-  }, [isDeleted]);
+  }, []);
   return (
     <div className="px-4 max-w-7xl mx-auto">
       <h1 className="mx-auto mt-20 text-3xl font-bold text-left">Корзина</h1>
       {isAuthed ? (
         <div className="mx-auto mt-20">
           {cart.length ? (
-            cart.map((item) => (
-              <CartItem cart={item} rerender={{ isDeleted, setIsDeleted }} />
-            ))
+            cart.map((item) => <CartItem cart={item} />)
           ) : (
             <p>Корзина пуста</p>
           )}
