@@ -30,6 +30,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Enable CORS
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'https://lazyhomeshop.onrender.com');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+
 router.use('/', index);
 //router.use('/admin', adminAuth, admin);
 router.use('/admin', admin);
