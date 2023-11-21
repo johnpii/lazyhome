@@ -21,7 +21,7 @@ const CartScreen = () => {
       {isAuthed ? (
         <div className="mx-auto mt-20">
           {cart.length ? (
-            cart.map((item) => <CartItem cart={item} />)
+            cart.map((item) => <CartItem cart={item} key={item.product._id} />)
           ) : (
             <p>Корзина пуста</p>
           )}
