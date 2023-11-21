@@ -38,35 +38,33 @@ block content
       background-color: #66ff66;
       }
       .delete-button {
-          background-color: #ffd700;
-          border: none;
-          color: #333;
-          padding: 10px 20px;
-          margin-left: 10px;
-          border-radius: 5px;
-          text-decoration: none;
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-          transition: background-color 0.3s ease;
-        }
-
-    .delete-button:hover {
-          background-color: #ffcc00;
-        }
+        background-color: #cc3333;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-left: 10px;
+        text-decoration: none;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+      .delete-button:hover {
+      background-color: #ff6666;
+      }
     .update-button {
-          background-color: #5a9aa5;
-          border: none;
-          color: white;
-          padding: 10px 20px;
-          border-radius: 5px;
-          margin-left: 10px;
-          text-decoration: none;
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-          transition: background-color 0.3s ease;
-        }
-
-    .update-button:hover {
-          background-color: #326b77;
-        }
+        background-color: #3333cc;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        margin-left: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+      .update-button:hover {
+      background-color: #6666ff;
+      }
     .home-button {
       background-color: #000066;
       border: none;
@@ -84,10 +82,28 @@ block content
     .home-button:hover {
       background-color: #0000cc;
     }
+    .cart-button {
+      background-color: #ff9933;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      margin-left: 10px;
+      text-decoration: none;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .cart-button:hover {
+      background-color: #ffad33;
+    }
+
   a(href="/api/auth/registration" class="add-button") Add User
   a(href="/api/auth/login" class="add-button") Login
   a(class="delete-button" href="/api/auth/logout") Logout
-  a(class="delete-button" href="/api/cart") Cart
+  a(class="cart-button" href="/api/cart") Cart
   h1 Users List
     table
       thead
