@@ -105,7 +105,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  res.cookie("jwt", "", { maxAge: "0" });
+  res.cookie("jwt", "", { httpOnly: true, maxAge: 0 });
   return res.json({ message: "User was logged out" });
 });
 

@@ -51,6 +51,7 @@ export const checkLogin = async () => {
       withCredentials: true,
     })
     .then((res) => {
+      console.log("check login, ", res.data);
       return res.data.decoded ? true : false;
     })
     .catch((e) => console.log(e.response));

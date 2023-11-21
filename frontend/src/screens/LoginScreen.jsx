@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../services/auth.service";
+import { useDispatch } from "react-redux";
+import { setAuthStatus } from "../store/auth/authActions";
+import { Toaster, toast } from "sonner";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   return (
     <>
+      <Toaster />
       <form
         className="max-w-md h-80 flex flex-col text-left mx-auto mt-40 
       border-2 rounded-lg border-cyan-400 py-3 px-6 shadow-xl
@@ -39,8 +43,8 @@ const LoginScreen = () => {
           onClick={(e) => {
             e.preventDefault();
             login(username, password);
-            navigate("/");
-            window.location.reload();
+            dispatch(setAuthStatus(true));
+            navigate(-1);
           }}
         >
           Войти

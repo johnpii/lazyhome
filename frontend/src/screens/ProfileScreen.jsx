@@ -12,7 +12,6 @@ const ProfileScreen = () => {
     logout();
     dispatch(setAuthStatus(false));
     navigate("/login");
-    window.location.reload();
   };
   return (
     <div className="px-4">
