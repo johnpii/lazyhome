@@ -44,7 +44,7 @@ const LoginScreen = () => {
             e.preventDefault();
             login(username, password);
             dispatch(setAuthStatus(true));
-            navigate(-1);
+            navigate("/catalog");
           }}
         >
           Войти
