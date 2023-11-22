@@ -24,7 +24,7 @@ const LoginScreen = () => {
       dispatch(setAuthStatus(true));
 
       setTimeout(() => {
-        navigate(-1);
+        navigate("/catalog");
       }, 1500);
     } else {
       toast.error("Ошибка входа");
