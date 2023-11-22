@@ -6,6 +6,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 const index = require('./routes/index');
 const admin = require('./routes/admin');
