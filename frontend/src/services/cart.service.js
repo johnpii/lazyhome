@@ -13,11 +13,12 @@ export const getCart = async () => {
 
 export const addItem = async (productId, quantity) => {
   try {
-    await axios.post(`/api/cart/add/${productId}`, {
+    const res = await axios.post(`/api/cart/add/${productId}`, {
       quantity,
     });
+    return res;
   } catch (e) {
-    console.log(exports);
+    return e.response.message;
   }
 };
 

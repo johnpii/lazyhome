@@ -1,11 +1,32 @@
 import { register } from "../services/auth.service";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAuthStatus } from "../store/auth/authActions";
+import { toast } from "sonner";
 
 const Registration = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleButton = async (e) => {
+    e.preventDefault();
+    const { res, status } = await register(username, password);
+    console.log(res, status);
+    if (status === 200) {
+      toast.success("Регистрация прошла успешно");
+      dispatch(setAuthStatus(true));
+
+      setTimeout(() => {
+        navigate("/profile");
+      }, 2000);
+    } else {
+      toast.error("Ошибка ", {
+        description: "При регистрации произошла ошибка",
+      });
+    }
+  };
   return (
     <>
       <form
@@ -35,12 +56,7 @@ const Registration = () => {
         <button
           className="mx-auto mt-8 border-2 rounded-lg border-cyan-400 py-2 px-4"
           type="submit"
-          onClick={(e) => {
-            e.preventDefault();
-            register(username, password);
-            navigate("/");
-            window.location.reload();
-          }}
+          onClick={handleButton}
         >
           Зарегистрироваться
         </button>
