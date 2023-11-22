@@ -1,17 +1,27 @@
 import { logout } from "../services/auth.service";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setAuthStatus } from "../store/auth/authActions";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
-  const isAuthed = useSelector((state) => state.auth.isAuthed);
-
   const navigate = useNavigate();
-  const quit = () => {
-    logout();
-    dispatch(setAuthStatus(false));
-    navigate("/login");
+  const quit = async (e) => {
+    e.preventDefault();
+    const res = await logout();
+    if (res.message === "User was logged out") {
+      toast.success("Вы вышли из аккаунта");
+      dispatch(setAuthStatus(false));
+      setTimeout(() => {
+        navigate("../login");
+      }, 1500);
+    } else {
+      setTimeout(() => {
+        dispatch(setAuthStatus(false));
+        navigate("../login");
+      }, 500);
+    }
   };
   return (
     <div className="px-4">

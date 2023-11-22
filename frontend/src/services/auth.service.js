@@ -12,9 +12,10 @@ export const register = async (username, password) => {
         withCredentials: true,
       }
     );
-    console.log(res.data.message);
+    console.log(res);
+    return { res: res, status: res.status };
   } catch (e) {
-    console.log(e.response);
+    return { res: e, status: e.response.status };
   }
 };
 
@@ -30,9 +31,9 @@ export const login = async (username, password) => {
         withCredentials: true,
       }
     );
-    console.log(res.data.message);
+    return { res: res, status: res.status };
   } catch (e) {
-    console.log(e.response);
+    return { res: e, status: e.response.status };
   }
 };
 
