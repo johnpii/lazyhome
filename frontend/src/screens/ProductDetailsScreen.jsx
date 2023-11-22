@@ -4,13 +4,24 @@ import { useParams, Link } from "react-router-dom";
 import { fetchProducts } from "../services/product.service";
 import { formatPrice } from "../services/price.service";
 import { addItem } from "../services/cart.service";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 const ProductDetailsScreen = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [itemCount, setItemCount] = useState(1);
-
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    const res = await addItem(product._id, itemCount);
+    console.log(res);
+    if (res) {
+      toast.success("Товар добавлен в корзину");
+    } else {
+      toast.error("Войдите в профиль", {
+        description: "Ошибка при добавлении товара в корзину",
+      });
+    }
+  };
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchProducts.getById(id);
@@ -32,7 +43,6 @@ const ProductDetailsScreen = () => {
   };
   return (
     <>
-      <Toaster richColors position="top-center" />
       {product ? (
         <div className="text-left p-7">
           <Link to="../" className="border border-cyan-400 rounded-md p-3">
@@ -77,18 +87,7 @@ const ProductDetailsScreen = () => {
               <button
                 className="mt-5 border-2 rounded-lg border-cyan-400 py-3 px-6 min-w-max
             font-semibold text-xl"
-                onClick={() => {
-                  try {
-                    addItem(product._id, itemCount);
-                    toast.custom((t) => (
-                      <div className="mt-20 p-4 border rounded-md border-cyan-400 bg-zinc-800">
-                        Товар добавлен в корзину
-                      </div>
-                    ));
-                  } catch (e) {
-                    console.log(e.response);
-                  }
-                }}
+                onClick={handleAdd}
               >
                 Добавить в корзину
               </button>
