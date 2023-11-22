@@ -12,6 +12,7 @@ import { setAuthStatus } from "./store/auth/authActions";
 import { useEffect } from "react";
 import ProtectedRoutes from "./components/protected/ProtectedRoutes";
 import AboutScreen from "./screens/AboutScreen";
+import { Toaster } from "sonner";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,20 +29,29 @@ const App = () => {
     fetchData();
   }, [dispatch]);
   return (
-    <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="*" element={<CatalogScreen />}></Route>
-        <Route path="/login" element={<LoginScreen />}></Route>
-        <Route element={<ProtectedRoutes />}>
-          <Route path="/profile" element={<ProfileScreen />}></Route>
-        </Route>
-        <Route path="/registration" element={<RegistrationScreen />}></Route>
-        <Route path="/product/:id" element={<ProductDetailsScreen />}></Route>
-        <Route path="/cart" element={<CartScreen />}></Route>
-        <Route path="/about" element={<AboutScreen />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Toaster
+        theme="dark"
+        position="top-center"
+        dir="auto"
+        duration={2000}
+        offset="100px"
+      />
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="*" element={<CatalogScreen />}></Route>
+          <Route path="/login" element={<LoginScreen />}></Route>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/profile" element={<ProfileScreen />}></Route>
+          </Route>
+          <Route path="/registration" element={<RegistrationScreen />}></Route>
+          <Route path="/product/:id" element={<ProductDetailsScreen />}></Route>
+          <Route path="/cart" element={<CartScreen />}></Route>
+          <Route path="/about" element={<AboutScreen />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 
