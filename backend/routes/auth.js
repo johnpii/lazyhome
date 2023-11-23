@@ -58,7 +58,7 @@ router.post(
         httpOnly: true,
         sameSite: "none",
         secure: true,
-        domain: "*.onrender.com",
+        domain: "onrender.com",
         maxAge: maxAge * 1000, // 3hrs in ms
       });
       const userId = user._id;
