@@ -14,8 +14,7 @@ router.get("/registration", function (req, res) {
   res.render("registration");
 });
 
-router.post(
-  "/registration",
+router.post("/registration",
   [
     check(
       "username",
