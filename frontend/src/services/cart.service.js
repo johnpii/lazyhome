@@ -13,9 +13,15 @@ export const getCart = async () => {
 
 export const addItem = async (productId, quantity) => {
   try {
-    const res = await axios.post(`/api/cart/add/${productId}`, {
-      quantity,
-    });
+    const res = await axios.post(
+      `/api/cart/add/${productId}`,
+      {
+        quantity,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     return res;
   } catch (e) {
     return e.response.message;
@@ -24,7 +30,9 @@ export const addItem = async (productId, quantity) => {
 
 export const removeItem = async (productId) => {
   try {
-    await axios.get(`/api/cart/remove/${productId}`);
+    await axios.get(`/api/cart/remove/${productId}`, {
+      withCredentials: true,
+    });
   } catch (e) {
     console.log(e);
   }
