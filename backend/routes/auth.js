@@ -56,6 +56,9 @@ router.post(
       );
       res.cookie("jwt", token, {
         httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        domain: "*.onrender.com",
         maxAge: maxAge * 1000, // 3hrs in ms
       });
       const userId = user._id;
@@ -92,6 +95,9 @@ router.post("/login", async (req, res) => {
     );
     res.cookie("jwt", token, {
       httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      domain: "*.onrender.com",
       maxAge: maxAge * 1000, // 3hrs in ms
     });
     res.status(201).json({
@@ -105,7 +111,13 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  res.cookie("jwt", "", { httpOnly: true, maxAge: 0 });
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    sameSite: "none",
+    secure: true,
+    domain: "*.onrender.com",
+    maxAge: 0,
+  });
   return res.json({ message: "User was logged out" });
 });
 
