@@ -3,7 +3,7 @@ import axios from "axios";
 export const register = async (username, password) => {
   try {
     const res = await axios.post(
-      "/api/auth/registration",
+      "https://lazy-home.onrender.com/api/auth/registration",
       {
         username,
         password,
@@ -22,7 +22,7 @@ export const register = async (username, password) => {
 export const login = async (username, password) => {
   try {
     const res = await axios.post(
-      "/api/auth/login",
+      "https://lazy-home.onrender.com/api/auth/login",
       {
         username,
         password,
@@ -39,7 +39,7 @@ export const login = async (username, password) => {
 
 export const logout = async () => {
   return axios
-    .get("/api/auth/logout", {
+    .get("https://lazy-home.onrender.com/api/auth/logout", {
       withCredentials: true,
     })
     .then((res) => res.data)
@@ -48,7 +48,7 @@ export const logout = async () => {
 
 export const checkLogin = async () => {
   return axios
-    .get("/api/auth/checkJwt", {
+    .get("https://lazy-home.onrender.com/api/auth/checkJwt", {
       withCredentials: true,
     })
     .then((res) => {
