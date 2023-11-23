@@ -20,6 +20,9 @@ export const addItem = async (productId, quantity) => {
       `https://lazy-home.onrender.com/api/cart/add/${productId}`,
       {
         quantity,
+      },
+      {
+        withCredentials: true,
       }
     );
     return res;
@@ -31,7 +34,10 @@ export const addItem = async (productId, quantity) => {
 export const removeItem = async (productId) => {
   try {
     await axios.get(
-      `https://lazy-home.onrender.com/api/cart/remove/${productId}`
+      `https://lazy-home.onrender.com/api/cart/remove/${productId}`,
+      {
+        withCredentials: true,
+      }
     );
   } catch (e) {
     console.log(e);
