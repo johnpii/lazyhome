@@ -54,7 +54,9 @@ router.post("/registration",
         }
       );
       res.cookie("jwt", token, {
-        httpOnly: true,
+        httpOnly: false,
+        sameSite: "none",
+        secure: true,
         maxAge: maxAge * 1000, // 3hrs in ms
       });
       const userId = user._id;
@@ -90,7 +92,9 @@ router.post("/login", async (req, res) => {
       { expiresIn: maxAge }
     );
     res.cookie("jwt", token, {
-      httpOnly: true,
+      httpOnly: false,
+      sameSite: "none",
+      secure: true,
       maxAge: maxAge * 1000, // 3hrs in ms
     });
     res.status(201).json({
