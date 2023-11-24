@@ -19,7 +19,7 @@ const Registration = () => {
       dispatch(setAuthStatus(true));
 
       setTimeout(() => {
-        navigate("/profile");
+        navigate("/catalog");
       }, 2000);
     } else {
       toast.error("Ошибка ", {
