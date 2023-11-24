@@ -37,18 +37,16 @@ const Nav = () => {
        } md:opacity-0 opacity-100`}
       >
         {navigation.map((item) => (
-          <li key={item.link} className="md:my-7 mr-20 md:px-4">
+          <li key={item.link} className="md:my-7 mr-20 px-4">
             <Link to={item.link}>{item.name}</Link>
           </li>
         ))}
         {isAuthed ? (
-          <li className="md:my-7 mr-20 last:mr-0 md:px-4">
-            <Link to="/profile" className="">
-              Профиль
-            </Link>
+          <li className="md:my-7 mr-20 last:mr-0 px-4">
+            <Link to="/profile">Профиль</Link>
           </li>
         ) : (
-          <li className="md:my-7 mr-20 last:mr-0 md:px-4">
+          <li className="md:my-7 mr-20 last:mr-0 px-4">
             <Link to="/login">Войти</Link>
           </li>
         )}
