@@ -32,7 +32,7 @@ const LoginScreen = () => {
     console.log(res, status);
   };
   return (
-    <>
+    <div className="px-4">
       <form
         className="max-w-md h-80 flex flex-col text-left mx-auto mt-40 
       border-2 rounded-lg border-cyan-400 py-3 px-6 shadow-xl
@@ -71,7 +71,7 @@ const LoginScreen = () => {
           </Link>
         </p>
       </form>
-    </>
+    </div>
   );
 };
 

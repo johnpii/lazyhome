@@ -10,14 +10,6 @@ const CartScreen = () => {
   const [cart, setCart] = useState({});
   const [totalAmount, setTotalAmount] = useState(null);
   const [totalSum, setTotalSum] = useState(null);
-  function isEmpty(obj) {
-    for (const prop in obj) {
-      if (Object.hasOwn(obj, prop)) {
-        return false;
-      }
-    }
-    return true;
-  }
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCart();
@@ -27,6 +19,14 @@ const CartScreen = () => {
     fetchData();
   }, []);
   useEffect(() => {
+    function isEmpty(obj) {
+      for (const prop in obj) {
+        if (Object.hasOwn(obj, prop)) {
+          return false;
+        }
+      }
+      return true;
+    }
     console.log(cart);
     if (!isEmpty(cart)) {
       let amount = 0;
@@ -39,7 +39,7 @@ const CartScreen = () => {
       setTotalSum(total);
     }
     console.log(totalAmount, totalSum);
-  }, [cart]);
+  }, [cart]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="px-4">

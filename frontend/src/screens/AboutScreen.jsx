@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 const AboutScreen = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="px-4">
       <h1 className="max-w-screen-2xl mx-auto mt-20 text-3xl font-bold">
         О нас
       </h1>
