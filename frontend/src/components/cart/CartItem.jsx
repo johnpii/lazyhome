@@ -4,7 +4,7 @@ import { removeItem } from "../../services/cart.service";
 import { formatPrice } from "../../services/price.service";
 const CartItem = ({ cart }) => {
   return (
-    <div className="flex justify-between py-10 text-xl font-semibold border-b-2 last:border-0">
+    <div className="flex justify-between py-10 text-xl font-semibold border-b-2 max-w-5xl bg-[#2d2d2d] px-5 last:border-0">
       <div className="w-fit">
         <Link to={`../product/${cart.product._id}`}>
           <img
