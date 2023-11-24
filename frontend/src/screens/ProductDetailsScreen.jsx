@@ -44,18 +44,18 @@ const ProductDetailsScreen = () => {
   return (
     <>
       {product ? (
-        <div className="text-left p-7">
+        <div className="text-left p-7 sm:p-4">
           <Link to="../" className="border border-cyan-400 rounded-md p-3">
             Назад
           </Link>
-          <h2 className="py-10 max-w-screen-2xl mx-auto  font-bold text-3xl">
+          <h2 className="py-10 md:pb-0 sm:pb-0 max-w-screen-2xl mx-auto font-bold text-3xl">
             {product.title}
           </h2>
-          <div className="max-w-screen-2xl flex justify-between mx-auto text-left border-w-2 pt-10">
-            <div>
+          <div className="max-w-screen-2xl flex md:flex-col justify-between mx-auto text-left border-w-2 pt-10">
+            <div className="md:mx-auto sm:mx-auto">
               <img
-                className="mt-15 min-w-[340px] min-h-[340px] max-w-[440px] max-h-[440px]  border-2 
-            border-[#727272] border-solid rounded-xl overflow-hidden"
+                className="mt-15 max-w-[440px] max-h-[440px] border-2 
+            border-[#727272] border-solid rounded-xl overflow-hidden sm:w-[240px] sm:h-[240px]"
                 src={imagefrombuffer({
                   type: product.image.type,
                   data: product.image.data,
@@ -63,13 +63,13 @@ const ProductDetailsScreen = () => {
                 alt="item"
               />
             </div>
-            <div className="flex flex-col max-w-lg min-w-[220px] mx-2">
+            <div className="flex flex-col max-w-lg min-w-[220px] mx-2 md:py-10 sm:py-7">
               <h1 className="font-semibold text-2xl">Описание</h1>
               <p>{product.description}</p>
             </div>
             <div
               className="flex flex-col w-52 h-fit border-2 rounded-lg shadow-xl
-          shadow-cyan-600 border-cyan-600 border-solid px-10 py-7 min-w-fit"
+          shadow-cyan-600 border-cyan-600 border-solid px-10 py-7 min-w-fit md:mx-auto"
             >
               <p className="text-semibold text-2xl">
                 {formatPrice(product.price * itemCount)}
