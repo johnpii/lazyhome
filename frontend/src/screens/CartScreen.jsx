@@ -1,12 +1,23 @@
 import { useState, useEffect } from "react";
 import { getCart } from "../services/cart.service";
 import CartItem from "../components/cart/CartItem";
+import Checkout from "../components/cart/Checkout";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
 
 const CartScreen = () => {
   const isAuthed = useSelector((state) => state.auth.isAuthed);
   const [cart, setCart] = useState({});
+  const [totalAmount, setTotalAmount] = useState(null);
+  const [totalSum, setTotalSum] = useState(null);
+  function isEmpty(obj) {
+    for (const prop in obj) {
+      if (Object.hasOwn(obj, prop)) {
+        return false;
+      }
+    }
+    return true;
+  }
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCart();
@@ -15,32 +26,56 @@ const CartScreen = () => {
     };
     fetchData();
   }, []);
+  useEffect(() => {
+    console.log(cart);
+    if (!isEmpty(cart)) {
+      let amount = 0;
+      let total = 0;
+      cart.forEach((el) => {
+        amount += el.quantity;
+        total += el.total;
+      });
+      setTotalAmount(amount);
+      setTotalSum(total);
+    }
+    console.log(totalAmount, totalSum);
+  }, [cart]);
+
   return (
-    <div className="px-4 max-w-7xl mx-auto">
-      <h1 className="mx-auto mt-20 text-3xl font-bold text-left">Корзина</h1>
-      {isAuthed ? (
-        <div className="mx-auto mt-20">
-          {cart.length ? (
-            cart.map((item) => <CartItem cart={item} key={item.product._id} />)
-          ) : (
-            <p>Корзина пуста</p>
-          )}
-        </div>
-      ) : (
-        <div className="mx-auto">
-          <h1 className="text-2xl font-semibold mt-10">
-            Просматривать корзину можно только авторизованным пользователям.
-          </h1>
-          <Link to="/login">
-            <button
-              className="mt-10 border-2 rounded-lg border-cyan-400 py-3 px-6 min-w-max
+    <div className="px-4">
+      <div className="max-w-screen-2xl mx-auto">
+        <h1 className="mx-auto mt-20 text-3xl font-bold text-left">Корзина</h1>
+        {isAuthed ? (
+          <div className="mx-auto mt-20">
+            {cart.length ? (
+              <div className="flex justify-between">
+                <div>
+                  {cart.map((item) => (
+                    <CartItem cart={item} key={item.product._id} />
+                  ))}
+                </div>
+                <Checkout quantity={totalAmount} total={totalSum} />
+              </div>
+            ) : (
+              <p>Корзина пуста</p>
+            )}
+          </div>
+        ) : (
+          <div className="mx-auto">
+            <h1 className="text-2xl font-semibold mt-10">
+              Просматривать корзину можно только авторизованным пользователям.
+            </h1>
+            <Link to="/login">
+              <button
+                className="mt-10 border-2 rounded-lg border-cyan-400 py-3 px-6 min-w-max
             font-semibold text-xl"
-            >
-              Войти
-            </button>
-          </Link>
-        </div>
-      )}
+              >
+                Войти
+              </button>
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
