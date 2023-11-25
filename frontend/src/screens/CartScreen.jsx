@@ -44,11 +44,13 @@ const CartScreen = () => {
   return (
     <div className="px-4">
       <div className="max-w-screen-2xl mx-auto">
-        <h1 className="mx-auto mt-20 text-3xl font-bold text-left">Корзина</h1>
+        <h1 className="mx-auto mt-20 jd:mt-10 text-3xl font-bold text-left">
+          Корзина
+        </h1>
         {isAuthed ? (
-          <div className="mx-auto mt-20">
+          <div className="mx-auto mt-20 jd:mt-10">
             {cart.length ? (
-              <div className="flex justify-between">
+              <div className="flex justify-between jd:block">
                 <div>
                   {cart.map((item) => (
                     <CartItem cart={item} key={item.product._id} />
