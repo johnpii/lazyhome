@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 const AboutScreen = () => {
   const navigate = useNavigate();
   return (
-    <div className="px-4">
-      <h1 className="max-w-screen-2xl mx-auto mt-20 text-3xl font-bold">
+    <div className="px-4 sm:max-w-[280px]">
+      <h1 className="max-w-screen-2xl mx-auto mt-20 text-3xl sm:text-xl font-bold">
         О нас
       </h1>
-      <p className="max-w-3xl mx-auto mt-10 text-2xl text-left">
+      <p className="max-w-3xl mx-auto mt-10 text-2xl sm:text-base text-left">
         Lazy Home - новый онлайн маркетплейс товаров для умного дома. Перейдите
         в каталог, чтобы увидеть наличие интересующих вас товаров.
       </p>
