@@ -9,10 +9,10 @@ const CartItem = ({ cart }) => {
        max-w-5xl hd:max-w-2xl jd:min-w-full bg-[#2d2d2d] px-5 jd:px-3 last:border-0
        "
     >
-      <div className="w-auto min-w-max">
+      <div className="shrink-0 w-[240px] h-[240px] sm:w-[190px] sm:h-[190px] rd:w-[120px] rd:h-[120px]">
         <Link to={`../product/${cart.product._id}`}>
           <img
-            className="h-40 w-40 sm:h-20 sm:w-20 jd:h-32 jd:w-32"
+            className="w-full h-full"
             src={imagefrombuffer({
               type: cart.product.image.type,
               data: cart.product.image.data,
