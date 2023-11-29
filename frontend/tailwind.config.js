@@ -1,11 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme");
+const { screens } = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
     screens: {
-      ...defaultTheme.screens,
+      ...screens,
       sm: { max: "576px" },
       // => @media (max-width: 576px) { ... }
 
